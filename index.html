@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Festgeld Schweiz – Sichere Zinsen vergleichen | Frominvest AG</title>
+    <meta name="description"
+        content="Vergleichen Sie attraktive Festgeld-Angebote aus der Schweiz. Sichere Zinsen mit geprüften Banken – einfach, transparent und kostenlos. Frominvest AG.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar" id="navbar">
+        <div class="container navbar-inner">
+            <a href="#" class="logo" id="logo">
+                <span class="logo-icon">
+                    <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+                        <rect width="28" height="28" rx="6" fill="url(#logoGrad)" />
+                        <path d="M8 10h12M8 14h8M8 18h10" stroke="#fff" stroke-width="2" stroke-linecap="round" />
+                        <defs>
+                            <linearGradient id="logoGrad" x1="0" y1="0" x2="28" y2="28">
+                                <stop stop-color="#1a3a5c" />
+                                <stop offset="1" stop-color="#2d6a9f" />
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </span>
+                <span class="logo-text">Frominvest</span>
+            </a>
+            <div class="navbar-cta">
+                <a href="#email-form" class="btn btn-nav" id="nav-cta">Kostenlos starten</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <header class="hero" id="hero">
+        <div class="hero-bg-pattern"></div>
+        <div class="container hero-content">
+            <div class="hero-badge" id="hero-badge">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <path d="M8 1l1.8 3.6L14 5.3l-3 2.9.7 4.1L8 10.5 4.3 12.3l.7-4.1-3-2.9 4.2-.7L8 1z"
+                        fill="#c8a23c" />
+                </svg>
+                <span id="hero-badge-text">Vertrauenswürdig seit 2012</span>
+            </div>
+            <h1 class="hero-headline" id="hero-headline">
+                Festgeld Schweiz: Bis zu <span data-dynamic="max_rate">3.25%</span> Zinsen sichern – jetzt vergleichen
+            </h1>
+            <p class="hero-subheadline" id="hero-subheadline">
+                Vergleichen Sie attraktive Festgeld-Angebote und sichern Sie sich stabile Erträge – einfach, transparent
+                und kostenlos.
+            </p>
+            <div class="hero-ctas" id="hero-ctas">
+                <a href="#vergleich" class="btn btn-primary" id="cta-primary">Jetzt vergleichen</a>
+                <a href="#email-form" class="btn btn-secondary" id="cta-start">Kostenlos starten</a>
+            </div>
+            <div class="hero-stats" id="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-number" id="dynamic-bank-count">5+</span>
+                    <span class="stat-label">Geprüfte Banken</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <span class="stat-number" data-dynamic="max_rate">3.25%</span>
+                    <span class="stat-label">Bester Zinssatz</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <span class="stat-number">100%</span>
+                    <span class="stat-label">Kostenlos</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- EMAIL FORM (Primary) -->
+    <section class="email-section" id="email-form">
+        <div class="container">
+            <div class="email-card" id="email-card-primary">
+                <div class="email-card-inner">
+                    <div class="email-card-text">
+                        <h2 class="email-title">Kostenlose Festgeld-Angebote erhalten</h2>
+                        <p class="email-subtitle">Geben Sie Ihre E-Mail-Adresse ein und erhalten Sie die besten Angebote
+                            direkt in Ihr Postfach.</p>
+                    </div>
+                    <form class="email-form-group" id="primary-email-form"
+                        onsubmit="handleEmailSubmit(event, 'primary')">
+                        <div class="form-grid">
+                            <div class="form-group-field">
+                                <label for="first-name-primary" class="sr-only">Vorname</label>
+                                <input type="text" id="first-name-primary" class="form-input" placeholder="Vorname" required autocomplete="given-name">
+                            </div>
+                            <div class="form-group-field">
+                                <label for="last-name-primary" class="sr-only">Nachname</label>
+                                <input type="text" id="last-name-primary" class="form-input" placeholder="Nachname" required autocomplete="family-name">
+                            </div>
+                            <div class="form-group-field">
+                                <label for="email-input-primary" class="sr-only">E-Mail Adresse</label>
+                                <input type="email" id="email-input-primary" class="form-input" placeholder="E-Mail Adresse" required autocomplete="email">
+                            </div>
+                            <div class="form-group-field">
+                                <label for="phone-input-primary" class="sr-only">Telefonnummer</label>
+                                <input type="tel" id="phone-input-primary" class="form-input" placeholder="Telefonnummer" required autocomplete="tel">
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-form full-width" id="btn-email-primary">Kostenlose Angebote erhalten</button>
+                        </div>
+                        <p class="micro-copy">Keine Werbung. Nur relevante Angebote.</p>
+                        <div class="email-success" id="email-success-primary">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <circle cx="10" cy="10" r="10" fill="#27ae60" />
+                                <path d="M6 10l3 3 5-5" stroke="#fff" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                            Vielen Dank! Sie erhalten in Kürze eine E-Mail.
+                        </div>
+                        <div class="email-trust-badges">
+                            <span class="trust-badge">✔ 100% kostenlos</span>
+                            <span class="trust-badge">✔ Keine Verpflichtung</span>
+                            <span class="trust-badge">✔ Diskret &amp; sicher</span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- VERGLEICHSTABELLE -->
+    <section class="comparison-section" id="vergleich">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title" id="comparison-title">Aktuelle Festgeld-Angebote im Vergleich</h2>
+                <div class="section-line"></div>
+            </div>
+
+            <!-- Filters -->
+            <p class="pre-filter-note">Unsere Experten haben die besten Festgeld-Angebote für Sie vorgefiltert – vergleichen Sie jetzt.</p>
+            <div class="filter-tabs" id="table-filters">
+                <!-- Dynamically populated -->
+            </div>
+
+            <div class="table-wrapper" id="comparison-table-wrapper">
+                <table class="comparison-table" id="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Bank</th>
+                            <th>Zinssatz p.a.</th>
+                            <th>Laufzeit</th>
+                            <th>Mindestanlage</th>
+                            <th>Aktion</th>
+                        </tr>
+                    </thead>
+                    <tbody id="table-body">
+                        <!-- Dynamically populated via app.js -->
+                    </tbody>
+                </table>
+            </div>
+            <p class="table-disclaimer" id="table-disclaimer">Alle Angaben ohne Gewähr. Zinssätze können sich je nach
+                Marktbedingungen ändern.</p>
+        </div>
+    </section>
+
+    <!-- TRUST SECTION -->
+    <section class="trust-section" id="trust">
+        <div class="container">
+            <div class="trust-grid">
+                <div class="trust-text" id="trust-content">
+                    <div class="section-header left">
+                        <h2 class="section-title">Warum über <span data-dynamic="user_count">12.000</span> Anleger bereits verglichen haben</h2>
+                        <div class="section-line"></div>
+                    </div>
+                    <p class="trust-description">
+                        Frominvest AG ist ein erfahrenes Unternehmen im Bereich Vermögensverwaltung. Seit 2012
+                        unterstützen wir Anleger dabei, sichere und transparente Investmententscheidungen zu treffen.
+                    </p>
+                    <ul class="trust-list" id="trust-list">
+                        <li class="trust-item">
+                            <span class="trust-check">
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                    <circle cx="10" cy="10" r="10" fill="#1a3a5c" />
+                                    <path d="M6 10l3 3 5-5" stroke="#fff" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
+                            </span>
+                            Einhaltung höchster Standards im Schweizer Finanzumfeld
+                        </li>
+                        <li class="trust-item">
+                            <span class="trust-check">
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                    <circle cx="10" cy="10" r="10" fill="#1a3a5c" />
+                                    <path d="M6 10l3 3 5-5" stroke="#fff" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
+                            </span>
+                            Über 14 Jahre Erfahrung im Finanzbereich
+                        </li>
+                        <li class="trust-item">
+                            <span class="trust-check">
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                    <circle cx="10" cy="10" r="10" fill="#1a3a5c" />
+                                    <path d="M6 10l3 3 5-5" stroke="#fff" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
+                            </span>
+                            Fokus auf Sicherheit und Transparenz
+                        </li>
+                        <li class="trust-item">
+                            <span class="trust-check">
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                    <circle cx="10" cy="10" r="10" fill="#1a3a5c" />
+                                    <path d="M6 10l3 3 5-5" stroke="#fff" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
+                            </span>
+                            Individuelle Anlagestrategien
+                        </li>
+                    </ul>
+                </div>
+                <div class="trust-visual" id="trust-visual">
+                    <div class="trust-card-stack">
+                        <div class="trust-stat-card">
+                            <div class="trust-stat-icon">
+                                <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+                                    <path
+                                        d="M18 3l4.2 8.4 9.3 1.4-6.7 6.6 1.6 9.2L18 24.3l-8.4 4.3 1.6-9.2-6.7-6.6 9.3-1.4L18 3z"
+                                        fill="#c8a23c" />
+                                </svg>
+                            </div>
+                            <div class="trust-stat-value">14+</div>
+                            <div class="trust-stat-label">Jahre Erfahrung</div>
+                        </div>
+                        <div class="trust-stat-card">
+                            <div class="trust-stat-icon">
+                                <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+                                    <path d="M18 4a14 14 0 100 28 14 14 0 000-28zm-2 20l-5-5 2-2 3 3 7-7 2 2-9 9z"
+                                        fill="#1a3a5c" />
+                                </svg>
+                            </div>
+                            <div class="trust-stat-value">100%</div>
+                            <div class="trust-stat-label">Transparent</div>
+                        </div>
+                        <div class="trust-stat-card">
+                            <div class="trust-stat-icon">
+                                <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+                                    <path
+                                        d="M18 4C10.3 4 4 10.3 4 18s6.3 14 14 14 14-6.3 14-14S25.7 4 18 4zm1 21h-2v-2h2v2zm0-4h-2V11h2v10z"
+                                        fill="#2d6a9f" />
+                                </svg>
+                            </div>
+                            <div class="trust-stat-value">Schweiz</div>
+                            <div class="trust-stat-label">Standort Küsnacht</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="how-section" id="how-it-works">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title" id="how-title">So funktioniert es</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="steps-grid" id="steps-grid">
+                <div class="step-card" id="step-1">
+                    <div class="step-number">1</div>
+                    <div class="step-icon">
+                        <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                            <rect x="4" y="6" width="32" height="28" rx="4" stroke="#1a3a5c" stroke-width="2.5" />
+                            <path d="M4 14h32" stroke="#1a3a5c" stroke-width="2.5" />
+                            <circle cx="10" cy="10" r="1.5" fill="#c8a23c" />
+                            <circle cx="15" cy="10" r="1.5" fill="#c8a23c" />
+                            <circle cx="20" cy="10" r="1.5" fill="#c8a23c" />
+                            <path d="M12 22h16M12 26h10" stroke="#1a3a5c" stroke-width="2" stroke-linecap="round" />
+                        </svg>
+                    </div>
+                    <h3 class="step-title">Angebot auswählen</h3>
+                    <p class="step-text">Vergleichen Sie die besten Festgeld-Angebote und wählen Sie die passende
+                        Laufzeit.</p>
+                </div>
+                <div class="step-connector">
+                    <svg width="40" height="12" viewBox="0 0 40 12">
+                        <path d="M0 6h32l-4-4M32 6l-4 4" stroke="#c8a23c" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+                </div>
+                <div class="step-card" id="step-2">
+                    <div class="step-number">2</div>
+                    <div class="step-icon">
+                        <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                            <rect x="8" y="4" width="24" height="32" rx="3" stroke="#1a3a5c" stroke-width="2.5" />
+                            <path d="M14 12h12M14 17h12M14 22h8" stroke="#1a3a5c" stroke-width="2"
+                                stroke-linecap="round" />
+                            <circle cx="28" cy="28" r="6" fill="#1a3a5c" />
+                            <path d="M26 28l2 2 3-3" stroke="#fff" stroke-width="1.5" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </div>
+                    <h3 class="step-title">Konto eröffnen</h3>
+                    <p class="step-text">Eröffnen Sie Ihr Anlagekonto direkt beim Anbieter – einfach und sicher.</p>
+                </div>
+                <div class="step-connector">
+                    <svg width="40" height="12" viewBox="0 0 40 12">
+                        <path d="M0 6h32l-4-4M32 6l-4 4" stroke="#c8a23c" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+                </div>
+                <div class="step-card" id="step-3">
+                    <div class="step-number">3</div>
+                    <div class="step-icon">
+                        <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                            <circle cx="20" cy="20" r="14" stroke="#1a3a5c" stroke-width="2.5" />
+                            <path d="M14 22c0-3.3 2.7-6 6-6s6 2.7 6 6" stroke="#c8a23c" stroke-width="2.5"
+                                stroke-linecap="round" />
+                            <circle cx="20" cy="16" r="2" fill="#1a3a5c" />
+                            <path d="M20 18v6" stroke="#1a3a5c" stroke-width="2.5" stroke-linecap="round" />
+                        </svg>
+                    </div>
+                    <h3 class="step-title">Zinsen erhalten</h3>
+                    <p class="step-text">Profitieren Sie von stabilen Zinserträgen ohne tägliche Kursschwankungen.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- VORTEILE -->
+    <section class="vorteile-section" id="vorteile">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title" id="vorteile-title">Ihre Vorteile mit Festgeld</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="vorteile-grid" id="vorteile-grid">
+                <div class="vorteil-card" id="vorteil-1">
+                    <div class="vorteil-icon">
+                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                            <path d="M4 24l7-7 5 5 12-12" stroke="#1a3a5c" stroke-width="2.5" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                            <path d="M20 10h8v8" stroke="#c8a23c" stroke-width="2.5" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </div>
+                    <h3 class="vorteil-title">Planbare und stabile Renditen</h3>
+                </div>
+                <div class="vorteil-card" id="vorteil-2">
+                    <div class="vorteil-icon">
+                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                            <path d="M16 4a12 12 0 100 24 12 12 0 000-24z" stroke="#1a3a5c" stroke-width="2.5" />
+                            <path d="M11 16l3 3 7-7" stroke="#c8a23c" stroke-width="2.5" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </div>
+                    <h3 class="vorteil-title">Kein Börsenrisiko</h3>
+                </div>
+                <div class="vorteil-card" id="vorteil-3">
+                    <div class="vorteil-icon">
+                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                            <rect x="4" y="8" width="24" height="16" rx="3" stroke="#1a3a5c" stroke-width="2.5" />
+                            <path d="M4 14h24" stroke="#c8a23c" stroke-width="2.5" />
+                            <path d="M8 20h6M8 22h4" stroke="#1a3a5c" stroke-width="1.5" stroke-linecap="round" />
+                        </svg>
+                    </div>
+                    <h3 class="vorteil-title">Einfache und transparente Struktur</h3>
+                </div>
+                <div class="vorteil-card" id="vorteil-4">
+                    <div class="vorteil-icon">
+                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                            <path d="M16 4l3.5 7 7.5 1.1-5.4 5.3 1.3 7.6L16 21.5l-6.9 3.5 1.3-7.6L5 12.1l7.5-1.1L16 4z"
+                                stroke="#1a3a5c" stroke-width="2.5" stroke-linejoin="round" />
+                        </svg>
+                    </div>
+                    <h3 class="vorteil-title">Ideal für konservative Anleger</h3>
+                </div>
+                <div class="vorteil-card" id="vorteil-5">
+                    <div class="vorteil-icon">
+                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                            <circle cx="16" cy="16" r="12" stroke="#1a3a5c" stroke-width="2.5" />
+                            <path d="M16 10v6l4 4" stroke="#c8a23c" stroke-width="2.5" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </div>
+                    <h3 class="vorteil-title">Geeignet für kurz- und mittelfristige Ziele</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CALCULATOR -->
+    <section class="calculator-section" id="rechner">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Ihr Festgeld-Rechner</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="calc-card">
+                <div class="calc-inputs">
+                    <div class="calc-group">
+                        <label for="calc-investment" class="calc-label">Anlagebetrag</label>
+                        <div class="calc-input-wrapper">
+                            <input type="number" id="calc-investment" class="calc-input" value="10000" min="1000"
+                                step="1000">
+                        </div>
+                        <input type="range" id="calc-investment-slider" class="calc-slider" min="1000" max="100000"
+                            step="1000" value="10000">
+                    </div>
+                    <div class="calc-group">
+                        <label for="calc-duration" class="calc-label">Laufzeit</label>
+                        <div class="calc-input-wrapper">
+                            <select id="calc-duration" class="calc-input select">
+                                <option value="6">6 Monate</option>
+                                <option value="12" selected>12 Monate</option>
+                                <option value="24">24 Monate</option>
+                                <option value="36">36 Monate</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="calc-results">
+                    <div class="calc-result-box">
+                        <p class="calc-result-label">Angewendeter Zinssatz</p>
+                        <p class="calc-result-rate" id="calc-applied-rate">3.10% p.a.</p>
+                    </div>
+                    <div class="calc-divider"></div>
+                    <div class="calc-result-box highlight">
+                        <p class="calc-result-label">Ihre geschätzte Auszahlung</p>
+                        <p class="calc-result-value" id="calc-output-val">10.310,00 €</p>
+                        <p class="calc-result-profit" id="calc-profit">Davon Zinsertrag: 310,00 €</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECOND EMAIL CAPTURE -->
+    <section class="email-section email-section-secondary" id="email-secondary">
+        <div class="container">
+            <div class="email-card email-card-secondary" id="email-card-secondary">
+                <div class="email-card-inner centered">
+                    <h2 class="email-title">Alle Angebote bequem per E-Mail erhalten</h2>
+                    <p class="email-subtitle">Erhalten Sie regelmäßig ausgewählte Festgeld-Angebote und Marktupdates –
+                        kostenlos und unverbindlich.</p>
+                    <form class="email-form-group compact" id="secondary-email-form"
+                        onsubmit="handleEmailSubmit(event, 'secondary')">
+                        <div class="form-grid compact">
+                            <div class="form-group-field">
+                                <label for="first-name-secondary" class="sr-only">Vorname</label>
+                                <input type="text" id="first-name-secondary" class="form-input" placeholder="Vorname" required autocomplete="given-name">
+                            </div>
+                            <div class="form-group-field">
+                                <label for="last-name-secondary" class="sr-only">Nachname</label>
+                                <input type="text" id="last-name-secondary" class="form-input" placeholder="Nachname" required autocomplete="family-name">
+                            </div>
+                            <div class="form-group-field">
+                                <label for="email-input-secondary" class="sr-only">E-Mail Adresse</label>
+                                <input type="email" id="email-input-secondary" class="form-input" placeholder="E-Mail Adresse" required autocomplete="email">
+                            </div>
+                            <div class="form-group-field">
+                                <label for="phone-input-secondary" class="sr-only">Telefonnummer</label>
+                                <input type="tel" id="phone-input-secondary" class="form-input" placeholder="Telefonnummer" required autocomplete="tel">
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-form full-width" id="btn-email-secondary">Jetzt sichern</button>
+                        </div>
+                        <p class="micro-copy">Keine Werbung. Nur relevante Angebote.</p>
+                        <div class="email-success" id="email-success-secondary">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <circle cx="10" cy="10" r="10" fill="#27ae60" />
+                                <path d="M6 10l3 3 5-5" stroke="#fff" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                            Vielen Dank! Sie erhalten in Kürze eine E-Mail.
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer" id="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand" id="footer-brand">
+                    <div class="footer-logo">
+                        <span class="logo-icon">
+                            <svg width="24" height="24" viewBox="0 0 28 28" fill="none">
+                                <rect width="28" height="28" rx="6" fill="url(#logoGrad2)" />
+                                <path d="M8 10h12M8 14h8M8 18h10" stroke="#fff" stroke-width="2"
+                                    stroke-linecap="round" />
+                                <defs>
+                                    <linearGradient id="logoGrad2" x1="0" y1="0" x2="28" y2="28">
+                                        <stop stop-color="#1a3a5c" />
+                                        <stop offset="1" stop-color="#2d6a9f" />
+                                    </linearGradient>
+                                </defs>
+                            </svg>
+                        </span>
+                        <span class="logo-text">Frominvest AG</span>
+                    </div>
+                    <p class="footer-address">Küsnacht, Schweiz</p>
+                </div>
+                <div class="footer-links" id="footer-links">
+                    <a href="#" class="footer-link" id="link-impressum">Impressum</a>
+                    <a href="#" class="footer-link" id="link-datenschutz">Datenschutz</a>
+                    <a href="#" class="footer-link" id="link-kontakt">Kontakt</a>
+                </div>
+            </div>
+            <div class="footer-divider"></div>
+            <div class="footer-legal" id="footer-legal">
+                <p>Diese Website dient ausschließlich zu Informationszwecken und stellt keine Anlageberatung dar. Wir arbeiten mit ausgewählten Partnern im europäischen Finanzraum zusammen. Stand:
+                    <span id="footer-last-updated">01.01.2026</span>
+                </p>
+                <p>Alle Angaben ohne Gewähr. Zinssätze können variieren.</p>
+                <p>Diese Inhalte stellen keine Finanzberatung dar. Investitionen sind mit Risiken verbunden. Bitte
+                    informieren Sie sich vor einer Anlageentscheidung umfassend.</p>
+            </div>
+            <div class="footer-copyright">
+                <p>&copy; 2026 Frominvest AG. Alle Rechte vorbehalten.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- STICKY CTA BAR -->
+    <div id="sticky-cta-bar" class="sticky-cta-bar">
+        <div class="sticky-info">
+            <div id="sticky-cta-logo" class="sticky-logo">CS</div>
+            <div class="sticky-text-group">
+                <div id="sticky-cta-title" class="sticky-title">Credit Suisse</div>
+                <div id="sticky-cta-subtitle" class="sticky-subtitle">Top Angebot sichern</div>
+            </div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 12px;">
+            <a href="#email-form" id="sticky-cta-btn" class="btn btn-cta-green">Jetzt sichern</a>
+            <div id="sticky-cta-close" class="sticky-close">✕</div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

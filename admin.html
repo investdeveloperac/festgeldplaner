@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin-Panel | Frominvest AG</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+    <div id="login-modal" class="modal">
+        <div class="modal-content">
+            <h2>Admin Login</h2>
+            <p>Bitte geben Sie das Passwort ein (Standard: admin123)</p>
+            <input type="password" id="admin-pass" placeholder="Passwort">
+            <button onclick="login()">Anmelden</button>
+            <p id="login-err" style="color:red; display:none; margin-top:10px;">Falsches Passwort</p>
+        </div>
+    </div>
+
+    <div class="admin-wrapper" id="admin-app" style="display: none;">
+        <header class="admin-header">
+            <div>
+                <h1>Frominvest AG – Festgeld Admin</h1>
+                <p>Verwalten Sie die Festgeld-Angebote, die auf der Landing Page angezeigt werden.</p>
+            </div>
+            <div class="header-actions">
+                <button class="btn btn-secondary" onclick="addNewOffer()">+ Neues Angebot</button>
+                <button class="btn btn-primary" onclick="exportData()">Daten exportieren (JSON)</button>
+            </div>
+        </header>
+
+        <main class="admin-content">
+            <div class="config-section">
+                <h2>Globale Einstellungen</h2>
+                <div class="config-grid">
+                    <div class="form-group">
+                        <label>Unternehmen</label>
+                        <input type="text" id="config-company" value="Frominvest AG">
+                    </div>
+                    <div class="form-group">
+                        <label>Anzahl Anleger</label>
+                        <input type="number" id="config-users" value="12400">
+                    </div>
+                    <div class="form-group">
+                        <label>Zuletzt aktualisiert</label>
+                        <input type="date" id="config-date" value="2026-03-27">
+                    </div>
+                </div>
+            </div>
+
+            <div class="offers-section">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                    <h2>Aktuelle Angebote</h2>
+                    <span id="offer-count" class="badge">15 Angebote</span>
+                </div>
+                
+                <div id="offers-list" class="offers-list">
+                    <!-- JS renders cards here -->
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Simple auth
+        function checkAuth() {
+            if(localStorage.getItem('adminAuth') === 'true') {
+                document.getElementById('login-modal').style.display = 'none';
+                document.getElementById('admin-app').style.display = 'block';
+                loadData();
+            }
+        }
+        function login() {
+            const val = document.getElementById('admin-pass').value;
+            if(val === 'admin123') {
+                localStorage.setItem('adminAuth', 'true');
+                checkAuth();
+            } else {
+                document.getElementById('login-err').style.display = 'block';
+            }
+        }
+        checkAuth();
+
+        let appData = null;
+
+        async function loadData() {
+            try {
+                const res = await fetch('data.json');
+                if(!res.ok) throw new Error("fetch failed");
+                appData = await res.json();
+            } catch(e) {
+                // Initial fallback
+                appData = {
+                    "last_updated": "2026-03-27",
+                    "site_config": { "user_count": 12400 },
+                    "offers": []
+                };
+            }
+            renderApp();
+        }
+
+        function renderApp() {
+            document.getElementById('config-date').value = appData.last_updated;
+            document.getElementById('config-users').value = appData.site_config.user_count;
+            
+            const list = document.getElementById('offers-list');
+            list.innerHTML = '';
+            
+            appData.offers.forEach((offer, idx) => {
+                const card = document.createElement('div');
+                card.className = `offer-card ${offer.highlight_tag === 'Top Angebot' ? 'is-top' : ''}`;
+                card.innerHTML = `
+                    <div class="card-header">
+                        <h3>${offer.bank_name}</h3>
+                        <div class="card-actions">
+                            <button onclick="setTop(${idx})" class="btn-sm ${offer.highlight_tag === 'Top Angebot' ? 'active' : ''}">Top Angebot</button>
+                            <button onclick="deleteOffer(${idx})" class="btn-sm danger">X</button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label>Zinssatz (%)</label>
+                            <input type="number" step="0.01" value="${offer.interest_rate}" onchange="updateOffer(${idx}, 'interest_rate', this.value)">
+                        </div>
+                        <div class="form-group">
+                            <label>Laufzeit (Monate)</label>
+                            <input type="number" value="${offer.duration_months}" onchange="updateOffer(${idx}, 'duration_months', this.value)">
+                        </div>
+                        <div class="form-group">
+                            <label>Land</label>
+                            <select onchange="updateOffer(${idx}, 'country', this.value)">
+                                <option value="Germany" ${offer.country==='Germany'?'selected':''}>Deutschland</option>
+                                <option value="Switzerland" ${offer.country==='Switzerland'?'selected':''}>Schweiz</option>
+                                <option value="Austria" ${offer.country==='Austria'?'selected':''}>Österreich</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Highlight Tag</label>
+                            <input type="text" value="${offer.highlight_tag}" placeholder="z.B. Beliebt" onchange="updateOffer(${idx}, 'highlight_tag', this.value)">
+                        </div>
+                    </div>
+                `;
+                list.appendChild(card);
+            });
+            document.getElementById('offer-count').textContent = appData.offers.length + " Angebote";
+        }
+
+        function updateOffer(idx, key, val) {
+            if(key === 'interest_rate' || key === 'duration_months') val = parseFloat(val);
+            appData.offers[idx][key] = val;
+        }
+
+        function setTop(idx) {
+            appData.offers.forEach(o => { if(o.highlight_tag === 'Top Angebot') o.highlight_tag = ''; });
+            appData.offers[idx].highlight_tag = 'Top Angebot';
+            renderApp();
+        }
+
+        function deleteOffer(idx) {
+            if(confirm("Angebot löschen?")) {
+                appData.offers.splice(idx, 1);
+                renderApp();
+            }
+        }
+
+        function addNewOffer() {
+            appData.offers.unshift({
+                "id": "new-" + Date.now(),
+                "bank_name": "Neue Bank",
+                "country": "Germany",
+                "interest_rate": 2.50,
+                "duration_months": 12,
+                "minimum_investment": 5000,
+                "currency": "EUR",
+                "risk_level": "low",
+                "highlight_tag": "",
+                "viewers": 5,
+                "cta_link": "#email-form"
+            });
+            renderApp();
+        }
+
+        function exportData() {
+            appData.last_updated = document.getElementById('config-date').value;
+            appData.site_config.user_count = parseInt(document.getElementById('config-users').value);
+            
+            // Sort to ensure highest rate is top
+            appData.offers.sort((a,b) => b.interest_rate - a.interest_rate);
+            
+            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(appData, null, 2));
+            const downloadAnchorNode = document.createElement('a');
+            downloadAnchorNode.setAttribute("href", dataStr);
+            downloadAnchorNode.setAttribute("download", "data.json");
+            document.body.appendChild(downloadAnchorNode);
+            downloadAnchorNode.click();
+            downloadAnchorNode.remove();
+            
+            alert("data.json wurde heruntergeladen. Bitte ersetzen Sie die bestehende Datei im Projektordner.");
+            renderApp();
+        }
+    </script>
+</body>
+</html>
