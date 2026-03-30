@@ -167,6 +167,9 @@ const TableEngine = {
     currentFilter: "Alle",
 
     init() {
+        const bodyCountry = document.body.dataset.country;
+        if (bodyCountry) this.currentFilter = bodyCountry;
+        
         this.renderFilters();
         this.renderTable(this.currentFilter);
     },

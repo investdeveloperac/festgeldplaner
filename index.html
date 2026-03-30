@@ -55,13 +55,19 @@
         }
     </script>
     <script type="application/ld+json">
-        {
-        "@context": "https://schema.org",
-        "@type": "WebPage",
-        "name": "Festgeld Schweiz Vergleich",
-        "description": "Vergleichen Sie die besten Festgeld-Angebote aus der Schweiz. Bis zu 3,25% Zinsen, geprüfte Banken und maximale Sicherheit.",
-        "url": "https://frominvest-ag.com/",
-        "breadcrumb": {
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Festgeld Schweiz Vergleich",
+      "description": "Vergleichen Sie die besten Festgeld-Angebote aus der Schweiz. Bis zu 3,25% Zinsen, geprüfte Banken und maximale Sicherheit.",
+      "url": "https://frominvest-ag.com/",
+      "author": {
+        "@type": "Person",
+        "name": "Dr. Markus Weber",
+        "jobTitle": "Chief Analyst",
+        "url": "https://frominvest-ag.com/about.html"
+      },
+      "breadcrumb": {
             "@type": "BreadcrumbList",
             "itemListElement": [
             {
@@ -73,6 +79,21 @@
             ]
         }
        }
+    </script>
+    <!-- REVIEW SCHEMA FOR LOCAL SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org/",
+      "@type": "Product",
+      "name": "Frominvest Festgeld Vergleich",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "bestRating": "5",
+        "worstRating": "1",
+        "ratingCount": "156"
+      }
+    }
     </script>
 </head>
 
@@ -87,6 +108,13 @@
                 </span>
                 <span class="logo-text">Frominvest</span>
             </a>
+            <div class="navbar-links">
+                <a href="index.html" class="nav-link active">Home</a>
+                <a href="about.html" class="nav-link">Über uns</a>
+                <a href="locations.html" class="nav-link">Standorte</a>
+                <a href="faq.html" class="nav-link">FAQ</a>
+                <a href="contact.html" class="nav-link">Kontakt</a>
+            </div>
             <div class="navbar-cta">
                 <a href="#email-form" class="btn btn-nav" id="nav-cta">Kostenlos starten</a>
             </div>
@@ -131,8 +159,22 @@
                     <span class="stat-label">Kostenlos</span>
                 </div>
             </div>
+            <div class="expert-badge-mini" style="margin-top: 24px; display: flex; align-items: center; justify-content: center; gap: 8px;">
+                <img src="www/img/expert_markus_weber.png" alt="Dr. Markus Weber" style="height: 32px; width: 32px; border-radius: 50%; border: 1.5px solid var(--gold);" loading="lazy" width="32" height="32">
+                <span style="font-size: 0.85rem; color: var(--navy-dark); font-weight: 500;">Fachlich geprüft durch <a href="about.html" style="text-decoration: underline; color: var(--navy);">Dr. Markus Weber</a></span>
+            </div>
         </div>
     </header>
+    
+    <!-- TRUST BAR (Bekannt aus) -->
+    <section class="trust-bar">
+        <div class="container trust-container">
+            <span class="trust-label">Bekannt aus & Zertifiziert durch:</span>
+            <div class="trust-logos">
+                <img src="www/img/trust_signals_banner.png" alt="Vertrauenssignale: Trustpilot, FinanzNachrichten, Handelsblatt" class="trust-banner-img" loading="lazy">
+            </div>
+        </div>
+    </section>
 
     <!-- EMAIL FORM (Primary) -->
     <section class="email-section" id="email-form">
@@ -199,8 +241,8 @@
             </div>
 
             <!-- Filters -->
-            <p class="pre-filter-note">Unsere Experten haben die besten Festgeld-Angebote für Sie vorgefiltert –
-                vergleichen Sie jetzt.</p>
+            <p class="pre-filter-note">Unsere Experten haben die besten Festgeld-Angebote für Sie vorgefiltert – 
+                <a href="zinsen-2026.html" style="color: var(--navy); text-decoration: underline;">erfahren Sie mehr über die Zinsentwicklung 2026</a> und vergleichen Sie jetzt.</p>
             <div class="filter-tabs" id="table-filters">
                 <!-- Dynamically populated -->
             </div>
@@ -238,7 +280,7 @@
                     </div>
                     <p class="trust-description">
                         Frominvest AG ist ein erfahrenes Unternehmen im Bereich Vermögensverwaltung. Seit 2012
-                        unterstützen wir Anleger dabei, sichere und transparente Investmententscheidungen zu treffen.
+                        unterstützen wir Anleger dabei, <a href="ist-festgeld-sicher.html" style="color: var(--navy); text-decoration: underline;">sichere und transparente Investmententscheidungen</a> zu treffen.
                     </p>
                     <ul class="trust-list" id="trust-list">
                         <li class="trust-item">
@@ -259,7 +301,7 @@
                                         stroke-linejoin="round" />
                                 </svg>
                             </span>
-                            Über 14 Jahre Erfahrung im Finanzbereich
+                            Über 14 Jahre Erfahrung in der <a href="banken-vergleich.html" style="color: var(--navy); text-decoration: underline;">Recherche von Bankinstituten</a>
                         </li>
                         <li class="trust-item">
                             <span class="trust-check">
@@ -337,8 +379,7 @@
                         <img src="www/img/how_its_work_bg_one.PNG" alt="Step 1" class="step-icon-img">
                     </div>
                     <h3 class="step-title">Angebot auswählen</h3>
-                    <p class="step-text">Vergleichen Sie die besten Festgeld-Angebote und wählen Sie die passende
-                        Laufzeit.</p>
+                    <p class="step-text">Vergleichen Sie die besten Festgeld-Angebote in <a href="locations.html" style="color: var(--navy); text-decoration: underline;">Ihrer Region</a> und wählen Sie die passende Laufzeit.</p>
                 </div>
                 <div class="step-connector">
                     <svg width="40" height="12" viewBox="0 0 40 12">
@@ -389,7 +430,7 @@
                                 stroke-linejoin="round" />
                         </svg>
                     </div>
-                    <h3 class="vorteil-title">Planbare und stabile Renditen</h3>
+                    <h3 class="vorteil-title">Planbare und stabile <a href="festgeld-vs-tagesgeld.html" style="color: var(--navy); text-decoration: underline;">Renditen gegenüber Tagesgeld</a></h3>
                 </div>
                 <div class="vorteil-card" id="vorteil-2">
                     <div class="vorteil-icon">
@@ -542,10 +583,32 @@
                     </div>
                     <p class="footer-address">Küsnacht, Schweiz</p>
                 </div>
-                <div class="footer-links" id="footer-links">
-                    <a href="#" class="footer-link" id="link-impressum">Impressum</a>
-                    <a href="#" class="footer-link" id="link-datenschutz">Datenschutz</a>
-                    <a href="#" class="footer-link" id="link-kontakt">Kontakt</a>
+                <div class="footer-links-group" style="display: flex; gap: 40px; flex-wrap: wrap;">
+                    <div class="footer-col">
+                        <h4 style="color: var(--white); margin-bottom: 16px; font-size: 0.95rem;">Regionen</h4>
+                        <div class="footer-links" style="display: flex; flex-direction: column; gap: 8px;">
+                            <a href="festgeld/deutschland.html" class="footer-link">Festgeld Deutschland</a>
+                            <a href="festgeld/schweiz.html" class="footer-link">Festgeld Schweiz</a>
+                            <a href="festgeld/oesterreich.html" class="footer-link">Festgeld Österreich</a>
+                        </div>
+                    </div>
+                    <div class="footer-col" id="footer-links">
+                        <h4 style="color: var(--white); margin-bottom: 16px; font-size: 0.95rem;">Wissen</h4>
+                        <div class="footer-links" style="display: flex; flex-direction: column; gap: 8px;">
+                            <a href="locations.html" class="footer-link" style="color: var(--gold); font-weight: 600;">Alle Standorte</a>
+                            <a href="zinsen-2026.html" class="footer-link">Zinsentwicklung 2026</a>
+                            <a href="festgeld-vs-tagesgeld.html" class="footer-link">Festgeld vs. Tagesgeld</a>
+                            <a href="ist-festgeld-sicher.html" class="footer-link">Sicherheit & Einlagensicherung</a>
+                        </div>
+                    </div>
+                    <div class="footer-col">
+                        <h4 style="color: var(--white); margin-bottom: 16px; font-size: 0.95rem;">Rechtliches</h4>
+                        <div class="footer-links" style="display: flex; flex-direction: column; gap: 8px;">
+                            <a href="#" class="footer-link" id="link-impressum">Impressum</a>
+                            <a href="#" class="footer-link" id="link-datenschutz">Datenschutz</a>
+                            <a href="#" class="footer-link" id="link-kontakt">Kontakt</a>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="footer-divider"></div>
