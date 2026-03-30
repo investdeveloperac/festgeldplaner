@@ -146,6 +146,22 @@ const GeoAdapter = {
     }
 };
 
+// ─── BANK LOGOS MAPPING ───────────────────────────────────────────────────────────
+const BankLogos = {
+    "Erste Bank": "https://www.google.com/s2/favicons?domain=erstebank.at&sz=128",
+    "Commerzbank": "https://www.google.com/s2/favicons?domain=commerzbank.de&sz=128",
+    "ING Deutschland": "https://www.google.com/s2/favicons?domain=ing.de&sz=128",
+    "Zürcher Kantonalbank": "https://en.wikipedia.org/wiki/Special:FilePath/Z%C3%BCrcher_Kantonalbank_logo.svg?width=512",
+    "Sparkasse": "https://www.google.com/s2/favicons?domain=sparkasse.de&sz=128",
+    "Deutsche Bank": "https://www.google.com/s2/favicons?domain=deutsche-bank.de&sz=128",
+    "Raiffeisenbank Österreich": "https://www.google.com/s2/favicons?domain=raiffeisen.at&sz=128",
+    "UBS Schweiz": "https://www.google.com/s2/favicons?domain=ubs.com&sz=128",
+    "BAWAG P.S.K.": "https://en.wikipedia.org/wiki/Special:FilePath/BAWAG_P.S.K._logo.svg?width=512",
+    "PostFinance": "https://www.google.com/s2/favicons?domain=postfinance.ch&sz=128",
+    "Raiffeisen Schweiz": "https://www.google.com/s2/favicons?domain=raiffeisen.ch&sz=128",
+    "Credit Suisse": "https://www.google.com/s2/favicons?domain=credit-suisse.com&sz=128"
+};
+
 // ─── TABLE ENGINE ─────────────────────────────────────────────────────────────
 const TableEngine = {
     currentFilter: "Alle",
@@ -196,6 +212,10 @@ const TableEngine = {
             const avatarClass = isTop ? 'bank-avatar best' : 'bank-avatar';
             const rateClass = isTop ? 'rate-badge best rate-large' : 'rate-badge rate-large';
             const avatarText = o.bank_name.substring(0, 2).toUpperCase();
+            
+            const avatarContent = BankLogos[o.bank_name] 
+                ? `<img src="${BankLogos[o.bank_name]}" alt="${o.bank_name}" onerror="this.onerror=null; this.parentElement.innerHTML='${avatarText}';">`
+                : avatarText;
 
             // Badge HTML
             let badgeHTML = '';
@@ -219,7 +239,7 @@ const TableEngine = {
             tr.innerHTML = `
                 <td data-label="Bank">
                     <div class="bank-name-cell">
-                        <div class="${avatarClass}">${avatarText}</div>
+                        <div class="${avatarClass}">${avatarContent}</div>
                         <div class="bank-name-text">
                             <span class="bank-name-main">${o.bank_name}</span>
                             ${badgeHTML}
@@ -240,11 +260,7 @@ const TableEngine = {
             tbody.appendChild(tr);
         });
 
-        // Hover micro-interactions
-        document.querySelectorAll('.table-row').forEach(row => {
-            row.addEventListener('mouseenter', () => { row.style.transform = 'scale(1.003)'; row.style.zIndex = '2'; });
-            row.addEventListener('mouseleave', () => { row.style.transform = ''; row.style.zIndex = ''; });
-        });
+        // CSS handles hover states smoothly without triggering layout overflows.
     }
 };
 
@@ -363,7 +379,13 @@ const CTAPersonalizer = {
                     const topOffer = DataStore.data && DataStore.data.offers ? DataStore.data.offers[0] : null;
                     if (topOffer) {
                         stickyBar.classList.add('visible');
-                        if (stickyLogo) stickyLogo.textContent = topOffer.bank_name.substring(0, 2).toUpperCase();
+                        if (stickyLogo) {
+                            if (BankLogos[topOffer.bank_name]) {
+                                stickyLogo.innerHTML = `<img src="${BankLogos[topOffer.bank_name]}" alt="${topOffer.bank_name}" onerror="this.onerror=null; this.innerHTML='${topOffer.bank_name.substring(0, 2).toUpperCase()}';">`;
+                            } else {
+                                stickyLogo.textContent = topOffer.bank_name.substring(0, 2).toUpperCase();
+                            }
+                        }
                         if (stickyTitle) stickyTitle.textContent = topOffer.bank_name;
                         const subtitleEl = document.getElementById('sticky-cta-subtitle');
                         if (subtitleEl) subtitleEl.textContent = `${topOffer.interest_rate.toFixed(2)}% p.a. – Bestes Angebot`;
@@ -559,6 +581,28 @@ window.handleEmailSubmit = async function (event, formType) {
     }
 };
 
+// ─── COOKIE MANAGER ───────────────────────────────────────────────────────────
+const CookieManager = {
+    init() {
+        const consent = localStorage.getItem('cookie_consent');
+        const banner = document.getElementById('cookie-consent');
+        const btn = document.getElementById('btn-accept-cookies');
+        
+        if (!consent && banner) {
+            setTimeout(() => {
+                banner.classList.add('visible');
+            }, 1000);
+            
+            if (btn) {
+                btn.addEventListener('click', () => {
+                    localStorage.setItem('cookie_consent', 'true');
+                    banner.classList.remove('visible');
+                });
+            }
+        }
+    }
+};
+
 // ─── BOOT ─────────────────────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', async () => {
     await DataStore.init();
@@ -569,4 +613,5 @@ document.addEventListener('DOMContentLoaded', async () => {
     CTAPersonalizer.init();
     TrustDynamics.init();
     UIController.init();
+    CookieManager.init();
 });
