@@ -632,6 +632,12 @@ a {
     transition: var(--transition);
 }
 
+textarea.form-input {
+    grid-column: span 2;
+    min-height: 100px;
+    resize: vertical;
+}
+
 .form-input:focus {
     outline: none;
     border-color: var(--navy);

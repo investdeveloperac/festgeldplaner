@@ -507,12 +507,13 @@ window.handleEmailSubmit = async function (event, formType) {
     const lastName = form.querySelector(formType === 'primary' ? '#last-name-primary' : '#last-name-secondary');
     const email = form.querySelector(formType === 'primary' ? '#email-input-primary' : '#email-input-secondary');
     const phone = form.querySelector(formType === 'primary' ? '#phone-input-primary' : '#phone-input-secondary');
+    const address = form.querySelector(formType === 'primary' ? '#address-primary' : '#address-secondary');
 
     const successEl = document.getElementById(`email-success-${formType}`);
     const submitBtn = form.querySelector('.btn-form');
 
     // Validation
-    const inputs = [firstName, lastName, email, phone];
+    const inputs = [firstName, lastName, email, phone, address];
     let isValid = true;
 
     inputs.forEach(input => {
@@ -543,7 +544,8 @@ window.handleEmailSubmit = async function (event, formType) {
                 firstName: firstName.value,
                 lastName: lastName.value,
                 email: email.value,
-                phone: phone.value
+                phone: phone.value,
+                address: address.value
             })
         });
 
