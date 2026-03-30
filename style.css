@@ -313,6 +313,18 @@ a {
     align-items: center;
 }
 
+.main-logo-img {
+    height: 32px;
+    width: auto;
+    display: block;
+}
+
+.footer-logo-img {
+    height: 28px;
+    width: auto;
+    display: block;
+}
+
 .logo-text {
     font-size: 1.15rem;
     font-weight: 700;
@@ -391,7 +403,7 @@ a {
     background: rgba(255, 255, 255, 0.7);
     padding: 10px;
     font-size: 1.15rem;
-    color: black;
+    color: var(--navy-dark);
     max-width: 640px;
     margin: 0 auto 36px;
     line-height: 1.7;
@@ -752,7 +764,7 @@ a {
 .pre-filter-note {
     text-align: center;
     font-size: 0.9rem;
-    color: var(--gray-500);
+    color: var(--navy-dark);
     margin-bottom: 16px;
     font-weight: 500;
 }
@@ -955,10 +967,9 @@ a {
 
 .trust-description {
     font-size: 1rem;
-    color: var(--gray-500);
+    color: var(--navy-dark);
     line-height: 1.8;
     margin-bottom: 28px;
-    color: black;
 }
 
 .trust-list {
