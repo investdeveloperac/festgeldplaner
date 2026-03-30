@@ -3,7 +3,7 @@
    v2 – High-Conversion Upgrade
    ======================================== */
 
-// ─── FALLBACK DATA ───────────────────────────────────────────────────────────
+// region FALLBACK DATA ───────────────────────────────────────────────────────────
 const FALLBACK_DATA = {
     "last_updated": "2026-03-27",
     "site_config": {
@@ -34,7 +34,7 @@ const FALLBACK_DATA = {
     ]
 };
 
-// ─── DATASTORE ────────────────────────────────────────────────────────────────
+// region DATASTORE ────────────────────────────────────────────────────────────────
 const DataStore = {
     data: null,
 
@@ -97,8 +97,8 @@ const DataStore = {
         if (country === "Alle") return all;
         return all.filter(o => {
             if (country === "Deutschland") return o.country === "Germany";
-            if (country === "Schweiz")     return o.country === "Switzerland";
-            if (country === "Österreich")  return o.country === "Austria";
+            if (country === "Schweiz") return o.country === "Switzerland";
+            if (country === "Österreich") return o.country === "Austria";
             return true;
         });
     },
@@ -121,20 +121,20 @@ const DataStore = {
     }
 };
 
-// ─── GEO ADAPTER ─────────────────────────────────────────────────────────────
+// region GEO ADAPTER ─────────────────────────────────────────────────────────────
 const GeoAdapter = {
     userCountry: "Deutschland",
     init() {
         const lang = navigator.language || navigator.userLanguage || '';
-        if (lang.includes('CH'))      this.userCountry = "Schweiz";
+        if (lang.includes('CH')) this.userCountry = "Schweiz";
         else if (lang.includes('AT')) this.userCountry = "Österreich";
-        else                          this.userCountry = "Deutschland";
+        else this.userCountry = "Deutschland";
 
         const badgeText = document.getElementById('hero-badge-text');
         if (badgeText) {
-            if (this.userCountry === "Schweiz")       badgeText.textContent = "Schweizer Qualität. Seit 2012.";
+            if (this.userCountry === "Schweiz") badgeText.textContent = "Schweizer Qualität. Seit 2012.";
             else if (this.userCountry === "Österreich") badgeText.textContent = "Für österreichische Anleger geprüft.";
-            else                                       badgeText.textContent = "Für deutsche Anleger geprüft.";
+            else badgeText.textContent = "Für deutsche Anleger geprüft.";
         }
     },
     formatCurrency(amount, currency) {
@@ -146,7 +146,7 @@ const GeoAdapter = {
     }
 };
 
-// ─── BANK LOGOS MAPPING ───────────────────────────────────────────────────────────
+// region BANK LOGOS MAPPING ───────────────────────────────────────────────────────────
 const BankLogos = {
     "Erste Bank": "https://www.google.com/s2/favicons?domain=erstebank.at&sz=128",
     "Commerzbank": "https://www.google.com/s2/favicons?domain=commerzbank.de&sz=128",
@@ -162,14 +162,14 @@ const BankLogos = {
     "Credit Suisse": "https://www.google.com/s2/favicons?domain=credit-suisse.com&sz=128"
 };
 
-// ─── TABLE ENGINE ─────────────────────────────────────────────────────────────
+// region TABLE ENGINE ─────────────────────────────────────────────────────────────
 const TableEngine = {
     currentFilter: "Alle",
 
     init() {
         const bodyCountry = document.body.dataset.country;
         if (bodyCountry) this.currentFilter = bodyCountry;
-        
+
         this.renderFilters();
         this.renderTable(this.currentFilter);
     },
@@ -180,7 +180,7 @@ const TableEngine = {
 
         filterContainer.innerHTML = '';
         const filters = (DataStore.data && DataStore.data.table_filters) ||
-                        ["Alle", "Deutschland", "Schweiz", "Österreich"];
+            ["Alle", "Deutschland", "Schweiz", "Österreich"];
 
         filters.forEach(f => {
             const btn = document.createElement('button');
@@ -215,8 +215,8 @@ const TableEngine = {
             const avatarClass = isTop ? 'bank-avatar best' : 'bank-avatar';
             const rateClass = isTop ? 'rate-badge best rate-large' : 'rate-badge rate-large';
             const avatarText = o.bank_name.substring(0, 2).toUpperCase();
-            
-            const avatarContent = BankLogos[o.bank_name] 
+
+            const avatarContent = BankLogos[o.bank_name]
                 ? `<img src="${BankLogos[o.bank_name]}" alt="${o.bank_name}" onerror="this.onerror=null; this.parentElement.innerHTML='${avatarText}';">`
                 : avatarText;
 
@@ -267,7 +267,7 @@ const TableEngine = {
     }
 };
 
-// ─── RATE SYNC ────────────────────────────────────────────────────────────────
+// region RATE SYNC ────────────────────────────────────────────────────────────────
 const RateSync = {
     init() {
         const maxRate = DataStore.getMaxRate();
@@ -282,10 +282,10 @@ const RateSync = {
     }
 };
 
-// ─── CALCULATOR ───────────────────────────────────────────────────────────────
+// region CALCULATOR ───────────────────────────────────────────────────────────────
 const Calculator = {
     init() {
-        const invInput  = document.getElementById('calc-investment');
+        const invInput = document.getElementById('calc-investment');
         const invSlider = document.getElementById('calc-investment-slider');
         const durSelect = document.getElementById('calc-duration');
         if (!invInput || !durSelect) return;
@@ -303,20 +303,20 @@ const Calculator = {
     },
 
     calculate() {
-        const invInput   = document.getElementById('calc-investment');
-        const durSelect  = document.getElementById('calc-duration');
-        const valOutput  = document.getElementById('calc-output-val');
+        const invInput = document.getElementById('calc-investment');
+        const durSelect = document.getElementById('calc-duration');
+        const valOutput = document.getElementById('calc-output-val');
         const rateDisplay = document.getElementById('calc-applied-rate');
-        const profitEl   = document.getElementById('calc-profit');
+        const profitEl = document.getElementById('calc-profit');
         if (!invInput || !durSelect || !valOutput) return;
 
-        const amount   = parseFloat(invInput.value) || 0;
-        const duration = parseInt(durSelect.value)  || 12;
+        const amount = parseFloat(invInput.value) || 0;
+        const duration = parseInt(durSelect.value) || 12;
 
         // Smart: prefer the Top Angebot's rate for the selected duration,
         // then best available rate, then global max as fallback.
         const topOffer = DataStore.data && DataStore.data.offers ? DataStore.data.offers[0] : null;
-        const offers  = DataStore.getOffers("Alle");
+        const offers = DataStore.getOffers("Alle");
         const matching = offers.filter(o => o.duration_months === duration);
 
         let bestRate;
@@ -339,22 +339,22 @@ const Calculator = {
     }
 };
 
-// ─── CTA PERSONALIZER + STICKY BAR ───────────────────────────────────────────
+// region CTA PERSONALIZER + STICKY BAR ───────────────────────────────────────────
 const CTAPersonalizer = {
     stickyShown: false,
 
     init() {
         const cta = document.getElementById('cta-primary');
         const hasVisited = localStorage.getItem('hasVisited_festgeld');
-        
+
         if (hasVisited && cta) {
             cta.textContent = "Top Angebot sichern";
         } else {
             localStorage.setItem('hasVisited_festgeld', 'true');
         }
 
-        const stickyBar  = document.getElementById('sticky-cta-bar');
-        const stickyBtn  = document.getElementById('sticky-cta-btn');
+        const stickyBar = document.getElementById('sticky-cta-bar');
+        const stickyBtn = document.getElementById('sticky-cta-btn');
         const stickyLogo = document.getElementById('sticky-cta-logo');
         const stickyTitle = document.getElementById('sticky-cta-title');
         const stickyClose = document.getElementById('sticky-cta-close');
@@ -371,9 +371,9 @@ const CTAPersonalizer = {
 
             // Update hero CTA text
             if (cta) {
-                if (scrollPercent > 50)     cta.textContent = "Kostenlose Angebote erhalten";
-                else if (hasVisited)        cta.textContent = "Top Angebot sichern";
-                else                        cta.textContent = "Jetzt vergleichen";
+                if (scrollPercent > 50) cta.textContent = "Kostenlose Angebote erhalten";
+                else if (hasVisited) cta.textContent = "Top Angebot sichern";
+                else cta.textContent = "Jetzt vergleichen";
             }
 
             // Show sticky bar after 55% scroll
@@ -402,7 +402,7 @@ const CTAPersonalizer = {
     }
 };
 
-// ─── TRUST DYNAMICS ──────────────────────────────────────────────────────────
+// region TRUST DYNAMICS ──────────────────────────────────────────────────────────
 const TrustDynamics = {
     init() {
         const dsDate = DataStore.getLastUpdated();
@@ -437,7 +437,7 @@ const TrustDynamics = {
     }
 };
 
-// ─── UI CONTROLLER ───────────────────────────────────────────────────────────
+// region UI CONTROLLER ───────────────────────────────────────────────────────────
 const UIController = {
     init() {
         const navbar = document.getElementById('navbar');
@@ -497,24 +497,24 @@ const UIController = {
     }
 };
 
-// ─── EMAIL FORM ───────────────────────────────────────────────────────────────
+// region EMAIL FORM ───────────────────────────────────────────────────────────────
 window.handleEmailSubmit = async function (event, formType) {
     event.preventDefault();
     const form = event.target;
-    
+
     // Select inputs based on form type (primary or secondary)
     const firstName = form.querySelector(formType === 'primary' ? '#first-name-primary' : '#first-name-secondary');
     const lastName = form.querySelector(formType === 'primary' ? '#last-name-primary' : '#last-name-secondary');
     const email = form.querySelector(formType === 'primary' ? '#email-input-primary' : '#email-input-secondary');
     const phone = form.querySelector(formType === 'primary' ? '#phone-input-primary' : '#phone-input-secondary');
-    
+
     const successEl = document.getElementById(`email-success-${formType}`);
     const submitBtn = form.querySelector('.btn-form');
 
     // Validation
     const inputs = [firstName, lastName, email, phone];
     let isValid = true;
-    
+
     inputs.forEach(input => {
         if (!input || !input.value || !input.validity.valid) {
             if (input) {
@@ -539,11 +539,11 @@ window.handleEmailSubmit = async function (event, formType) {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ 
+            body: JSON.stringify({
                 firstName: firstName.value,
                 lastName: lastName.value,
-                email: email.value, 
-                phone: phone.value 
+                email: email.value,
+                phone: phone.value
             })
         });
 
@@ -553,7 +553,7 @@ window.handleEmailSubmit = async function (event, formType) {
             // Success case
             successEl.classList.add('show');
             inputs.forEach(input => input.value = ''); // Clear all inputs
-            
+
             submitBtn.textContent = 'Gesendet ✓';
             submitBtn.style.background = '#27ae60';
             submitBtn.style.opacity = '1';
@@ -573,7 +573,7 @@ window.handleEmailSubmit = async function (event, formType) {
         submitBtn.textContent = 'Fehler! Nochmal...';
         submitBtn.style.background = '#e74c3c';
         submitBtn.style.opacity = '1';
-        
+
         alert(error.message || 'Verbindung zum Server fehlgeschlagen. Bitte versuchen Sie es später erneut.');
 
         setTimeout(() => {
@@ -584,18 +584,18 @@ window.handleEmailSubmit = async function (event, formType) {
     }
 };
 
-// ─── COOKIE MANAGER ───────────────────────────────────────────────────────────
+// region COOKIE MANAGER ───────────────────────────────────────────────────────────
 const CookieManager = {
     init() {
         const consent = localStorage.getItem('cookie_consent');
         const banner = document.getElementById('cookie-consent');
         const btn = document.getElementById('btn-accept-cookies');
-        
+
         if (!consent && banner) {
             setTimeout(() => {
                 banner.classList.add('visible');
             }, 1000);
-            
+
             if (btn) {
                 btn.addEventListener('click', () => {
                     localStorage.setItem('cookie_consent', 'true');
@@ -606,7 +606,7 @@ const CookieManager = {
     }
 };
 
-// ─── BOOT ─────────────────────────────────────────────────────────────────────
+// region BOOT ─────────────────────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', async () => {
     await DataStore.init();
     GeoAdapter.init();
