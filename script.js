@@ -1,5 +1,5 @@
 /* ========================================
-   FROMINVEST AG – JavaScript
+   FestgeldPlaner – JavaScript
    Scroll animations, email handling, navbar
    ======================================== */
 
@@ -150,3 +150,5 @@ document.addEventListener('DOMContentLoaded', () => {
     initScrollAnimations();
     animateCounters();
 });
+
+

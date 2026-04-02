@@ -3,7 +3,7 @@ const path = require('path');
 
 // Content Variations
 const intros = [
-    "<p>In {{CITY}} suchen Anleger vermehrt nach stabilen Renditechancen. Festgeld bietet hier eine optimale Kombination aus Sicherheit und planbarem Zinsertrag. Bei Frominvest AG helfen wir Ihnen, die lukrativsten Angebote für den Standort {{CITY}} zu identifizieren.</p>",
+    "<p>In {{CITY}} suchen Anleger vermehrt nach stabilen Renditechancen. Festgeld bietet hier eine optimale Kombination aus Sicherheit und planbarem Zinsertrag. Bei FestgeldPlaner helfen wir Ihnen, die lukrativsten Angebote für den Standort {{CITY}} zu identifizieren.</p>",
     "<p>Die Finanzwelt in {{CITY}} ist ständig in Bewegung. Wer sein Erspartes im Jahr 2026 sicher anlegen möchte, kommt am Thema Festgeld nicht vorbei. Wir vergleichen für Sie die tagesaktuellen Spitzenreiter unter den Banken in {{CITY}}.</p>",
     "<p>Sicherheit und Rendite sind für Anleger in {{CITY}} oberstes Gebot. Mit einem Festgeldkonto sichern Sie sich attraktive Zinsen bei maximalem Kapitalschutz. Entdecken Sie jetzt die besten Konditionen für Ihren Anlagehorizont in {{CITY}}.</p>"
 ];
@@ -48,3 +48,5 @@ function generate() {
 }
 
 generate();
+
+

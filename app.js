@@ -1,5 +1,5 @@
 /* ========================================
-   FROMINVEST AG – Dynamic Application Engine
+   FestgeldPlaner – Dynamic Application Engine
    v2 – High-Conversion Upgrade
    ======================================== */
 
@@ -7,7 +7,7 @@
 const FALLBACK_DATA = {
     "last_updated": "2026-03-27",
     "site_config": {
-        "company_name": "Frominvest AG",
+        "company_name": "FestgeldPlaner",
         "company_location": "Küsnacht, Schweiz",
         "founded_year": 2012,
         "user_count": 12400,
@@ -16,21 +16,21 @@ const FALLBACK_DATA = {
     },
     "table_filters": ["Alle", "Deutschland", "Schweiz", "Österreich"],
     "offers": [
-        { "id": "erste-at-36", "bank_name": "Erste Bank", "country": "Austria", "interest_rate": 3.40, "duration_months": 36, "minimum_investment": 25000, "currency": "EUR", "risk_level": "low", "highlight_tag": "", "viewers": 14, "cta_link": "#email-form" },
-        { "id": "commerzbank-36", "bank_name": "Commerzbank", "country": "Germany", "interest_rate": 3.30, "duration_months": 36, "minimum_investment": 10000, "currency": "EUR", "risk_level": "low", "highlight_tag": "", "viewers": 9, "cta_link": "#email-form" },
-        { "id": "erste-at-12", "bank_name": "Erste Bank", "country": "Austria", "interest_rate": 3.15, "duration_months": 12, "minimum_investment": 10000, "currency": "EUR", "risk_level": "low", "highlight_tag": "", "viewers": 11, "cta_link": "#email-form" },
-        { "id": "ing-de-12", "bank_name": "ING Deutschland", "country": "Germany", "interest_rate": 3.10, "duration_months": 12, "minimum_investment": 10000, "currency": "EUR", "risk_level": "low", "highlight_tag": "", "viewers": 22, "cta_link": "#email-form" },
-        { "id": "commerzbank-12", "bank_name": "Commerzbank", "country": "Germany", "interest_rate": 3.05, "duration_months": 12, "minimum_investment": 5000, "currency": "EUR", "risk_level": "low", "highlight_tag": "", "viewers": 7, "cta_link": "#email-form" },
-        { "id": "zkb-ch-36", "bank_name": "Zürcher Kantonalbank", "country": "Switzerland", "interest_rate": 3.00, "duration_months": 36, "minimum_investment": 20000, "currency": "CHF", "risk_level": "low", "highlight_tag": "", "viewers": 5, "cta_link": "#email-form" },
-        { "id": "sparkasse-24", "bank_name": "Sparkasse", "country": "Germany", "interest_rate": 3.00, "duration_months": 24, "minimum_investment": 10000, "currency": "EUR", "risk_level": "low", "highlight_tag": "", "viewers": 8, "cta_link": "#email-form" },
-        { "id": "deutsche-bank-24", "bank_name": "Deutsche Bank", "country": "Germany", "interest_rate": 2.95, "duration_months": 24, "minimum_investment": 25000, "currency": "EUR", "risk_level": "low", "highlight_tag": "", "viewers": 4, "cta_link": "#email-form" },
-        { "id": "raiffeisen-at-24", "bank_name": "Raiffeisenbank Österreich", "country": "Austria", "interest_rate": 2.90, "duration_months": 24, "minimum_investment": 15000, "currency": "EUR", "risk_level": "low", "highlight_tag": "", "viewers": 6, "cta_link": "#email-form" },
-        { "id": "ubs-ch-24", "bank_name": "UBS Schweiz", "country": "Switzerland", "interest_rate": 2.85, "duration_months": 24, "minimum_investment": 25000, "currency": "CHF", "risk_level": "low", "highlight_tag": "", "viewers": 18, "cta_link": "#email-form" },
-        { "id": "sparkasse-12", "bank_name": "Sparkasse", "country": "Germany", "interest_rate": 2.80, "duration_months": 12, "minimum_investment": 5000, "currency": "EUR", "risk_level": "low", "highlight_tag": "", "viewers": 3, "cta_link": "#email-form" },
-        { "id": "bawag-at-12", "bank_name": "BAWAG P.S.K.", "country": "Austria", "interest_rate": 2.75, "duration_months": 12, "minimum_investment": 5000, "currency": "EUR", "risk_level": "low", "highlight_tag": "", "viewers": 2, "cta_link": "#email-form" },
-        { "id": "postfinance-ch-24", "bank_name": "PostFinance", "country": "Switzerland", "interest_rate": 2.70, "duration_months": 24, "minimum_investment": 10000, "currency": "CHF", "risk_level": "low", "highlight_tag": "", "viewers": 4, "cta_link": "#email-form" },
-        { "id": "zkb-ch-12", "bank_name": "Zürcher Kantonalbank", "country": "Switzerland", "interest_rate": 2.65, "duration_months": 12, "minimum_investment": 10000, "currency": "CHF", "risk_level": "low", "highlight_tag": "", "viewers": 3, "cta_link": "#email-form" },
-        { "id": "raiffeisen-ch-12", "bank_name": "Raiffeisen Schweiz", "country": "Switzerland", "interest_rate": 2.55, "duration_months": 12, "minimum_investment": 5000, "currency": "CHF", "risk_level": "low", "highlight_tag": "", "viewers": 2, "cta_link": "#email-form" }
+        { "id": "erste-at-36", "bank_name": "Erste Bank", "country": "Austria", "interest_rate": 3.40, "duration_months": 36, "minimum_investment": 25000, "currency": "EUR", "risk_level": "low", "highlight_tag": "", "viewers": 14, "cta_link": "#lead-modal" },
+        { "id": "commerzbank-36", "bank_name": "Commerzbank", "country": "Germany", "interest_rate": 3.30, "duration_months": 36, "minimum_investment": 10000, "currency": "EUR", "risk_level": "low", "highlight_tag": "", "viewers": 9, "cta_link": "#lead-modal" },
+        { "id": "erste-at-12", "bank_name": "Erste Bank", "country": "Austria", "interest_rate": 3.15, "duration_months": 12, "minimum_investment": 10000, "currency": "EUR", "risk_level": "low", "highlight_tag": "", "viewers": 11, "cta_link": "#lead-modal" },
+        { "id": "ing-de-12", "bank_name": "ING Deutschland", "country": "Germany", "interest_rate": 3.10, "duration_months": 12, "minimum_investment": 10000, "currency": "EUR", "risk_level": "low", "highlight_tag": "", "viewers": 22, "cta_link": "#lead-modal" },
+        { "id": "commerzbank-12", "bank_name": "Commerzbank", "country": "Germany", "interest_rate": 3.05, "duration_months": 12, "minimum_investment": 5000, "currency": "EUR", "risk_level": "low", "highlight_tag": "", "viewers": 7, "cta_link": "#lead-modal" },
+        { "id": "zkb-ch-36", "bank_name": "Zürcher Kantonalbank", "country": "Switzerland", "interest_rate": 3.00, "duration_months": 36, "minimum_investment": 20000, "currency": "CHF", "risk_level": "low", "highlight_tag": "", "viewers": 5, "cta_link": "#lead-modal" },
+        { "id": "sparkasse-24", "bank_name": "Sparkasse", "country": "Germany", "interest_rate": 3.00, "duration_months": 24, "minimum_investment": 10000, "currency": "EUR", "risk_level": "low", "highlight_tag": "", "viewers": 8, "cta_link": "#lead-modal" },
+        { "id": "deutsche-bank-24", "bank_name": "Deutsche Bank", "country": "Germany", "interest_rate": 2.95, "duration_months": 24, "minimum_investment": 25000, "currency": "EUR", "risk_level": "low", "highlight_tag": "", "viewers": 4, "cta_link": "#lead-modal" },
+        { "id": "raiffeisen-at-24", "bank_name": "Raiffeisenbank Österreich", "country": "Austria", "interest_rate": 2.90, "duration_months": 24, "minimum_investment": 15000, "currency": "EUR", "risk_level": "low", "highlight_tag": "", "viewers": 6, "cta_link": "#lead-modal" },
+        { "id": "ubs-ch-24", "bank_name": "UBS Schweiz", "country": "Switzerland", "interest_rate": 2.85, "duration_months": 24, "minimum_investment": 25000, "currency": "CHF", "risk_level": "low", "highlight_tag": "", "viewers": 18, "cta_link": "#lead-modal" },
+        { "id": "sparkasse-12", "bank_name": "Sparkasse", "country": "Germany", "interest_rate": 2.80, "duration_months": 12, "minimum_investment": 5000, "currency": "EUR", "risk_level": "low", "highlight_tag": "", "viewers": 3, "cta_link": "#lead-modal" },
+        { "id": "bawag-at-12", "bank_name": "BAWAG P.S.K.", "country": "Austria", "interest_rate": 2.75, "duration_months": 12, "minimum_investment": 5000, "currency": "EUR", "risk_level": "low", "highlight_tag": "", "viewers": 2, "cta_link": "#lead-modal" },
+        { "id": "postfinance-ch-24", "bank_name": "PostFinance", "country": "Switzerland", "interest_rate": 2.70, "duration_months": 24, "minimum_investment": 10000, "currency": "CHF", "risk_level": "low", "highlight_tag": "", "viewers": 4, "cta_link": "#lead-modal" },
+        { "id": "zkb-ch-12", "bank_name": "Zürcher Kantonalbank", "country": "Switzerland", "interest_rate": 2.65, "duration_months": 12, "minimum_investment": 10000, "currency": "CHF", "risk_level": "low", "highlight_tag": "", "viewers": 3, "cta_link": "#lead-modal" },
+        { "id": "raiffeisen-ch-12", "bank_name": "Raiffeisen Schweiz", "country": "Switzerland", "interest_rate": 2.55, "duration_months": 12, "minimum_investment": 5000, "currency": "CHF", "risk_level": "low", "highlight_tag": "", "viewers": 2, "cta_link": "#lead-modal" }
     ]
 };
 
@@ -91,16 +91,25 @@ const DataStore = {
         this.applyTopOfferAlgorithm();
     },
 
-    getOffers(country = "Alle") {
+    getOffers(country = "Alle", duration = null) {
         if (!this.data) return [];
         const all = this.data.offers;
-        if (country === "Alle") return all;
-        return all.filter(o => {
-            if (country === "Deutschland") return o.country === "Germany";
-            if (country === "Schweiz") return o.country === "Switzerland";
-            if (country === "Österreich") return o.country === "Austria";
-            return true;
-        });
+        let filtered = all;
+
+        if (country !== "Alle") {
+            filtered = filtered.filter(o => {
+                if (country === "Deutschland") return o.country === "Germany";
+                if (country === "Schweiz") return o.country === "Switzerland";
+                if (country === "Österreich") return o.country === "Austria";
+                return true;
+            });
+        }
+
+        if (duration !== null) {
+            filtered = filtered.filter(o => o.duration_months === parseInt(duration, 10));
+        }
+
+        return filtered;
     },
 
     getMaxRate() {
@@ -165,10 +174,21 @@ const BankLogos = {
 // region TABLE ENGINE ─────────────────────────────────────────────────────────────
 const TableEngine = {
     currentFilter: "Alle",
+    currentDuration: 12,
+    currentAmount: 10000,
 
     init() {
         const bodyCountry = document.body.dataset.country;
         if (bodyCountry) this.currentFilter = bodyCountry;
+
+        const durSelect = document.getElementById('calc-duration');
+        if (durSelect) {
+            this.currentDuration = parseInt(durSelect.value, 10) || 12;
+        }
+        const invInput = document.getElementById('calc-investment');
+        if (invInput) {
+            this.currentAmount = parseFloat(invInput.value) || 10000;
+        }
 
         this.renderFilters();
         this.renderTable(this.currentFilter);
@@ -201,7 +221,7 @@ const TableEngine = {
         const tbody = document.getElementById('table-body');
         if (!tbody) return;
 
-        const offers = DataStore.getOffers(country);
+        const offers = DataStore.getOffers(country, this.currentDuration);
         tbody.innerHTML = '';
 
         if (offers.length === 0) {
@@ -233,8 +253,13 @@ const TableEngine = {
             // Popular note for top 3
             const popularNote = (index < 3) ? `<span class="popular-note">★ Beliebte Wahl bei Anlegern</span>` : '';
 
+            // Calculate Zinsertrag
+            const amount = this.currentAmount || 10000;
+            const profit = amount * (o.interest_rate / 100) * (this.currentDuration / 12);
+            const profitText = `+ ${GeoAdapter.formatCurrency(profit, o.currency)}`;
+
             // CTA: Top offer gets premium strong green button
-            const ctaClass = isTop ? 'btn-cta-strong' : 'btn btn-table';
+            const ctaClass = isTop ? 'btn-cta-strong modal-trigger' : 'btn btn-table modal-trigger';
             const ctaText = isTop ? 'Jetzt sichern →' : 'Angebot ansehen';
 
             const tr = document.createElement('tr');
@@ -252,7 +277,10 @@ const TableEngine = {
                 </td>
                 <td data-label="Zinssatz p.a."><span class="${rateClass}">${o.interest_rate.toFixed(2)}%</span></td>
                 <td><span class="duration-text">${o.duration_months} Monate</span></td>
-                <td><span class="investment-text">${GeoAdapter.formatCurrency(o.minimum_investment, o.currency)}</span></td>
+                <td>
+                    <span class="investment-text" style="color: var(--green); font-weight: 700; font-size: 1.05rem;">${profitText}</span>
+                    <span style="display: block; font-size: 0.75rem; color: var(--gray-500); margin-top: 4px;">Anlagebetrag: ${GeoAdapter.formatCurrency(amount, o.currency)}</span>
+                </td>
                 <td>
                     <div class="cta-cell">
                         <a href="${o.cta_link}" class="${ctaClass}">${ctaText}</a>
@@ -312,6 +340,19 @@ const Calculator = {
 
         const amount = parseFloat(invInput.value) || 0;
         const duration = parseInt(durSelect.value) || 12;
+
+        // SYNC TO MODAL
+        const mAmount = document.getElementById('modal-amount');
+        const mDuration = document.getElementById('modal-duration');
+        if (mAmount && mAmount.value != amount) mAmount.value = amount;
+        if (mDuration && mDuration.value != duration) mDuration.value = duration;
+
+        // SYNC TO TABLE
+        if (typeof TableEngine !== 'undefined' && (TableEngine.currentDuration !== duration || TableEngine.currentAmount !== amount)) {
+            TableEngine.currentDuration = duration;
+            TableEngine.currentAmount = amount;
+            TableEngine.renderTable(TableEngine.currentFilter);
+        }
 
         // Smart: prefer the Top Angebot's rate for the selected duration,
         // then best available rate, then global max as fallback.
@@ -474,7 +515,7 @@ const UIController = {
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
+                if (targetId === '#' || targetId === '#lead-modal') return;
                 e.preventDefault();
                 const target = document.querySelector(targetId);
                 if (target) {
@@ -497,92 +538,174 @@ const UIController = {
     }
 };
 
-// region EMAIL FORM ───────────────────────────────────────────────────────────────
-window.handleEmailSubmit = async function (event, formType) {
-    event.preventDefault();
-    const form = event.target;
+// region MODAL CONTROLLER ────────────────────────────────────────────────────────
+const ModalController = {
+    init() {
+        const overlay = document.getElementById('lead-modal-overlay');
+        const modal = document.getElementById('lead-modal');
+        const closeBtn = document.getElementById('lead-modal-close');
+        
+        if (!overlay || !modal) return;
 
-    // Select inputs based on form type (primary or secondary)
-    const firstName = form.querySelector(formType === 'primary' ? '#first-name-primary' : '#first-name-secondary');
-    const lastName = form.querySelector(formType === 'primary' ? '#last-name-primary' : '#last-name-secondary');
-    const email = form.querySelector(formType === 'primary' ? '#email-input-primary' : '#email-input-secondary');
-    const phone = form.querySelector(formType === 'primary' ? '#phone-input-primary' : '#phone-input-secondary');
-    const address = form.querySelector(formType === 'primary' ? '#address-primary' : '#address-secondary');
+        const openModal = (e) => {
+            e.preventDefault();
+            overlay.classList.add('show');
+            modal.classList.add('show');
+            document.body.style.overflow = 'hidden'; // prevent background scrolling
+        };
 
-    const successEl = document.getElementById(`email-success-${formType}`);
-    const submitBtn = form.querySelector('.btn-form');
+        const closeModal = () => {
+            overlay.classList.remove('show');
+            modal.classList.remove('show');
+            document.body.style.overflow = '';
+        };
 
-    // Validation
-    const inputs = [firstName, lastName, email, phone, address];
-    let isValid = true;
-
-    inputs.forEach(input => {
-        if (!input || !input.value || !input.validity.valid) {
-            if (input) {
-                input.style.borderColor = '#c53030';
-                input.style.boxShadow = '0 0 0 3px rgba(197,48,48,.1)';
-                setTimeout(() => { input.style.borderColor = ''; input.style.boxShadow = ''; }, 2000);
-            }
-            isValid = false;
-        }
-    });
-
-    if (!isValid) return;
-
-    const originalText = submitBtn.textContent;
-    submitBtn.textContent = 'Wird gesendet...';
-    submitBtn.disabled = true;
-    submitBtn.style.opacity = '0.7';
-
-    try {
-        const response = await fetch('/api/lead', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                firstName: firstName.value,
-                lastName: lastName.value,
-                email: email.value,
-                phone: phone.value,
-                address: address.value
-            })
+        // Attach to all triggers
+        document.addEventListener('click', (e) => {
+            const trigger = e.target.closest('.modal-trigger');
+            if (trigger) openModal(e);
         });
 
-        const result = await response.json();
+        // Close handlers
+        if (closeBtn) closeBtn.addEventListener('click', closeModal);
+        overlay.addEventListener('click', closeModal);
 
-        if (response.ok && result.success) {
-            // Success case
-            successEl.classList.add('show');
-            inputs.forEach(input => input.value = ''); // Clear all inputs
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal.classList.contains('show')) closeModal();
+        });
 
-            submitBtn.textContent = 'Gesendet ✓';
-            submitBtn.style.background = '#27ae60';
-            submitBtn.style.opacity = '1';
-
+        // Open if URL hash matches
+        if (window.location.hash === '#lead-modal') {
             setTimeout(() => {
-                successEl.classList.remove('show');
+                openModal({ preventDefault: () => {} });
+                history.replaceState(null, null, ' ');
+            }, 300);
+        }
+
+        // Two-way sync back to calculator
+        const mAmount = document.getElementById('modal-amount');
+        const mDuration = document.getElementById('modal-duration');
+        const calcInv = document.getElementById('calc-investment');
+        const calcSlider = document.getElementById('calc-investment-slider');
+        const calcDur = document.getElementById('calc-duration');
+        
+        if (mAmount && calcInv && calcSlider) {
+            mAmount.addEventListener('input', (e) => {
+                calcInv.value = e.target.value;
+                calcSlider.value = e.target.value;
+                if (typeof Calculator !== 'undefined') Calculator.calculate();
+            });
+        }
+        if (mDuration && calcDur) {
+            mDuration.addEventListener('change', (e) => {
+                calcDur.value = e.target.value;
+                if (typeof Calculator !== 'undefined') Calculator.calculate();
+            });
+        }
+
+        // Initialize Form Submission handler inside modal
+        const form = document.getElementById('modal-email-form');
+        if (form) {
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                await this.handleModalSubmit(form);
+            });
+        }
+    },
+
+    async handleModalSubmit(form) {
+        const amount = form.querySelector('#modal-amount');
+        const duration = form.querySelector('#modal-duration');
+        const firstName = form.querySelector('#modal-first-name');
+        const lastName = form.querySelector('#modal-last-name');
+        const email = form.querySelector('#modal-email');
+        const phone = form.querySelector('#modal-phone');
+        const address = form.querySelector('#modal-address');
+        const successEl = document.getElementById('modal-email-success');
+        const submitBtn = form.querySelector('#btn-modal-submit');
+        
+        const inputs = [amount, duration, firstName, lastName, email, phone, address];
+        let isValid = true;
+        
+        inputs.forEach(input => {
+            if (!input || !input.value || !input.validity.valid) {
+                if (input) {
+                    input.style.borderColor = '#c53030';
+                    input.style.boxShadow = '0 0 0 3px rgba(197,48,48,.1)';
+                    setTimeout(() => { input.style.borderColor = ''; input.style.boxShadow = ''; }, 2000);
+                }
+                isValid = false;
+            }
+        });
+        
+        if (!isValid) return;
+        
+        const originalText = submitBtn.textContent;
+        submitBtn.textContent = 'Wird gesendet...';
+        submitBtn.disabled = true;
+        submitBtn.style.opacity = '0.7';
+        
+        try {
+            const response = await fetch('/api/lead', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    amount: parseFloat(amount.value),
+                    duration: parseInt(duration.value),
+                    firstName: firstName.value,
+                    lastName: lastName.value,
+                    email: email.value,
+                    phone: phone.value,
+                    address: address.value
+                })
+            });
+        
+            const result = await response.json();
+        
+            if (response.ok && result.success) {
+                successEl.classList.add('show');
+                
+                submitBtn.textContent = 'Gesendet ✓';
+                submitBtn.style.background = '#27ae60';
+                submitBtn.style.opacity = '1';
+                
+                setTimeout(() => {
+                    successEl.classList.remove('show');
+                    // Reset form fields except defaults
+                    firstName.value = '';
+                    lastName.value = '';
+                    email.value = '';
+                    phone.value = '';
+                    address.value = '';
+                    
+                    submitBtn.textContent = originalText;
+                    submitBtn.disabled = false;
+                    submitBtn.style.background = '';
+                    
+                    // Close the modal upon success
+                    document.getElementById('lead-modal-overlay').classList.remove('show');
+                    document.getElementById('lead-modal').classList.remove('show');
+                    document.body.style.overflow = '';
+                }, 4000);
+            } else {
+                throw new Error(result.message || 'Ein Fehler ist aufgetreten.');
+            }
+        } catch (error) {
+            console.error('❌ Lead processing error:', error);
+            submitBtn.textContent = 'Fehler! Nochmal...';
+            submitBtn.style.background = '#e74c3c';
+            submitBtn.style.opacity = '1';
+        
+            alert(error.message || 'Verbindung zum Server fehlgeschlagen. Bitte versuchen Sie es später erneut.');
+        
+            setTimeout(() => {
                 submitBtn.textContent = originalText;
                 submitBtn.disabled = false;
                 submitBtn.style.background = '';
-            }, 5000);
-        } else {
-            // Server-side validation or error case
-            throw new Error(result.message || 'Ein Fehler ist aufgetreten.');
+            }, 3000);
         }
-    } catch (error) {
-        console.error('❌ Lead processing error:', error);
-        submitBtn.textContent = 'Fehler! Nochmal...';
-        submitBtn.style.background = '#e74c3c';
-        submitBtn.style.opacity = '1';
-
-        alert(error.message || 'Verbindung zum Server fehlgeschlagen. Bitte versuchen Sie es später erneut.');
-
-        setTimeout(() => {
-            submitBtn.textContent = originalText;
-            submitBtn.disabled = false;
-            submitBtn.style.background = '';
-        }, 3000);
     }
 };
 
@@ -618,5 +741,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     CTAPersonalizer.init();
     TrustDynamics.init();
     UIController.init();
+    ModalController.init();
     CookieManager.init();
 });
+
+

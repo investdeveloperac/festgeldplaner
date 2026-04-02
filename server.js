@@ -1,5 +1,5 @@
 /* ========================================
-   FROMINVEST AG – Lead Generation Backend
+   FESTGELDPLANER – Lead Generation Backend
    Production-Ready Node.js Server
    ======================================== */
 
@@ -88,13 +88,15 @@ function loadLeads() {
     return [];
 }
 
-function saveLead(firstName, lastName, email, phone) {
+function saveLead(firstName, lastName, email, phone, amount, duration) {
     const leads = loadLeads();
     const newLead = {
         firstName: firstName,
         lastName: lastName,
         email: email,
         phone: phone,
+        amount: amount,
+        duration: duration,
         date: new Date().toISOString().split('T')[0],
         timestamp: new Date().toISOString()
     };
@@ -125,7 +127,7 @@ transporter.verify()
     .catch(err => console.warn('⚠️ SMTP verification failed (emails may not send):', err.message));
 
 // ─── EMAIL TEMPLATES ──────────────────────────────────────────────────────────
-function getAdminEmailHTML(firstName, lastName, email, phone, date) {
+function getAdminEmailHTML(firstName, lastName, email, phone, amount, duration, date) {
     return `
     <!DOCTYPE html>
     <html lang="de">
@@ -137,7 +139,7 @@ function getAdminEmailHTML(firstName, lastName, email, phone, date) {
             </div>
             <div style="padding: 32px 40px;">
                 <p style="font-size: 16px; color: #2d3748; margin-bottom: 24px;">
-                    Eine neue Anfrage wurde über die Frominvest AG Website eingereicht.
+                    Eine neue Anfrage wurde über die FestgeldPlaner Website eingereicht.
                 </p>
                 <table style="width: 100%; border-collapse: collapse;">
                     <tr>
@@ -157,13 +159,21 @@ function getAdminEmailHTML(firstName, lastName, email, phone, date) {
                         <td style="padding: 12px 16px; color: #1a3a5c; font-size: 14px; border-bottom: 1px solid #ebedf0;">${phone}</td>
                     </tr>
                     <tr>
+                        <td style="padding: 12px 16px; background: #f8f9fb; font-weight: 600; color: #4a5568; font-size: 14px; border-bottom: 1px solid #ebedf0;">Anlagebetrag</td>
+                        <td style="padding: 12px 16px; background: #f8f9fb; color: #1a3a5c; font-size: 14px; border-bottom: 1px solid #ebedf0;">${amount} €</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 12px 16px; font-weight: 600; color: #4a5568; font-size: 14px; border-bottom: 1px solid #ebedf0;">Laufzeit</td>
+                        <td style="padding: 12px 16px; color: #1a3a5c; font-size: 14px; border-bottom: 1px solid #ebedf0;">${duration} Monate</td>
+                    </tr>
+                    <tr>
                         <td style="padding: 12px 16px; background: #f8f9fb; border-radius: 0 0 0 8px; font-weight: 600; color: #4a5568; font-size: 14px;">Datum</td>
                         <td style="padding: 12px 16px; background: #f8f9fb; border-radius: 0 0 8px 0; color: #2d3748; font-size: 14px;">${date}</td>
                     </tr>
                 </table>
                 <hr style="margin: 24px 0; border: none; border-top: 1px solid #ebedf0;">
                 <p style="font-size: 13px; color: #8a94a3;">
-                    Diese E-Mail wurde automatisch vom Frominvest AG Lead-System generiert.
+                    Diese E-Mail wurde automatisch vom FestgeldPlaner Lead-System generiert.
                 </p>
             </div>
         </div>
@@ -182,7 +192,7 @@ function getUserResponseHTML(lastName) {
 <div id="v1v1v1v1v1v1editbody1" style="font-size: 10pt; font-family: Verdana,Geneva,sans-serif;">
 <div id="v1v1v1v1v1v1v1editbody1" style="font-size: 10pt; font-family: Verdana,Geneva,sans-serif;">
 <p>&nbsp;</p>
-<div style="display: none; max-height: 0; overflow: hidden;">Frominvest AG &mdash; Professionelle Verm&ouml;gensverwaltung und attraktive Festgeld-L&ouml;sungen aus der Schweiz.</div>
+<div style="display: none; max-height: 0; overflow: hidden;">FestgeldPlaner &mdash; Professionelle Verm&ouml;gensverwaltung und attraktive Festgeld-L&ouml;sungen aus der Schweiz.</div>
 <table style="background-color: #f4f5f7;" width="100%" cellspacing="0" cellpadding="0">
 <tbody>
 <tr>
@@ -194,8 +204,8 @@ function getUserResponseHTML(lastName) {
 <table cellspacing="0" cellpadding="0">
 <tbody>
 <tr>
-<td style="background-color: #0f172a; border-radius: 12px; padding: 6px 12px;"><span style="color: #ffffff; font-size: 14px; font-weight: bold; font-family: 'Inter', Arial, sans-serif; letter-spacing: 0.5px;">FI</span></td>
-<td style="padding-left: 12px;"><span style="color: #0f172a; font-size: 20px; font-weight: bold; font-family: 'Inter', Arial, sans-serif; letter-spacing: -0.5px;">Frominvest AG</span></td>
+<td style="background-color: #0f172a; border-radius: 12px; padding: 6px 12px;"><span style="color: #ffffff; font-size: 14px; font-weight: bold; font-family: 'Inter', Arial, sans-serif; letter-spacing: 0.5px;">FP</span></td>
+<td style="padding-left: 12px;"><span style="color: #0f172a; font-size: 20px; font-weight: bold; font-family: 'Inter', Arial, sans-serif; letter-spacing: -0.5px;">FestgeldPlaner</span></td>
 </tr>
 </tbody>
 </table>
@@ -205,11 +215,11 @@ function getUserResponseHTML(lastName) {
 <td style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); border-radius: 16px 16px 0 0; padding: 48px 40px 40px 40px; text-align: center;">
 <h1 style="color: white; font-size: 32px; font-weight: bold; line-height: 40px; margin: 0 0 8px 0; font-family: 'Inter', Arial, sans-serif;">Festgeld-Anlagen</h1>
 <h2 style="color: #c9a84c; font-size: 28px; font-weight: bold; line-height: 36px; margin: 0 0 20px 0; font-family: 'Inter', Arial, sans-serif;">mit Schweizer Qualit&auml;t</h2>
-<p style="color: white; font-size: 16px; line-height: 26px; margin: 0 0 32px 0; font-family: 'Inter', Arial, sans-serif;">Frominvest AG bietet Ihnen professionelle Verm&ouml;gensverwaltung und attraktive Festgeld-L&ouml;sungen. Sicherheit, Transparenz und erstklassige Renditen &ndash; aus K&uuml;snacht.</p>
+<p style="color: white; font-size: 16px; line-height: 26px; margin: 0 0 32px 0; font-family: 'Inter', Arial, sans-serif;">FestgeldPlaner bietet Ihnen professionelle Verm&ouml;gensverwaltung und attraktive Festgeld-L&ouml;sungen. Sicherheit, Transparenz und erstklassige Renditen &ndash; aus K&uuml;snacht.</p>
 <table cellspacing="0" cellpadding="0" align="center">
 <tbody>
 <tr>
-<td style="background-color: #c9a84c; border-radius: 8px;"><a style="display: inline-block; padding: 14px 32px; color: #0f172a; font-size: 14px; font-weight: 600; text-decoration: none; font-family: 'Inter', Arial, sans-serif; letter-spacing: 0.3px;" href="https://frominvest-ag.com/" target="_blank" rel="noopener noreferrer"> Jetzt Webseite besuchen &rarr; </a></td>
+<td style="background-color: #c9a84c; border-radius: 8px;"><a style="display: inline-block; padding: 14px 32px; color: #0f172a; font-size: 14px; font-weight: 600; text-decoration: none; font-family: 'Inter', Arial, sans-serif; letter-spacing: 0.3px;" href="https://festgeldplaner.com/" target="_blank" rel="noopener noreferrer"> Jetzt Webseite besuchen &rarr; </a></td>
 </tr>
 </tbody>
 </table>
@@ -250,8 +260,8 @@ function getUserResponseHTML(lastName) {
 <table cellspacing="0" cellpadding="0">
 <tbody>
 <tr>
-<td style="background-color: rgba(255,255,255,0.15); border-radius: 8px; padding: 5px 10px;"><span style="color: #ffffff; font-size: 12px; font-weight: bold; font-family: 'Inter', Arial, sans-serif;">FI</span></td>
-<td style="padding-left: 10px;"><span style="color: #ffffff; font-size: 16px; font-weight: bold; font-family: 'Inter', Arial, sans-serif;">Frominvest AG</span></td>
+<td style="background-color: rgba(255,255,255,0.15); border-radius: 8px; padding: 5px 10px;"><span style="color: #ffffff; font-size: 12px; font-weight: bold; font-family: 'Inter', Arial, sans-serif;">FP</span></td>
+<td style="padding-left: 10px;"><span style="color: #ffffff; font-size: 16px; font-weight: bold; font-family: 'Inter', Arial, sans-serif;">FestgeldPlaner</span></td>
 </tr>
 </tbody>
 </table>
@@ -259,7 +269,7 @@ function getUserResponseHTML(lastName) {
 </tr>
 <tr>
 <td style="padding-bottom: 20px;" align="center">
-<p style="color: rgba(255,255,255,0.6); font-size: 13px; line-height: 22px; margin: 0; font-family: 'Inter', Arial, sans-serif;">Kohlrainstrasse 10 &middot; 8700 K&uuml;snacht ZH &middot; Schweiz<br />Tel: +41 44 523 6389 <br />E-Mail: info@frominvest-ag.com</p>
+<p style="color: rgba(255,255,255,0.6); font-size: 13px; line-height: 22px; margin: 0; font-family: 'Inter', Arial, sans-serif;">Kohlrainstrasse 10 &middot; 8700 K&uuml;snacht ZH &middot; Schweiz<br />Tel: +41 44 523 6389 <br />E-Mail: info@festgeldplaner.com</p>
 </td>
 </tr>
 <tr>
@@ -272,9 +282,9 @@ function getUserResponseHTML(lastName) {
 <table class="v1v1v1v1v1v1v1v1footer-links" cellspacing="0" cellpadding="0">
 <tbody>
 <tr>
-<td class="v1v1v1v1v1v1v1v1footer-link" style="padding: 0 12px;"><a style="color: #c9a84c; font-size: 13px; font-weight: 500; text-decoration: none; font-family: 'Inter', Arial, sans-serif;" href="https://frominvest-ag.com/" target="_blank" rel="noopener noreferrer"> Webseite </a></td>
-<td class="v1v1v1v1v1v1v1v1footer-link" style="padding: 0 12px;"><a style="color: rgba(255,255,255,0.6); font-size: 13px; font-weight: 500; text-decoration: none; font-family: 'Inter', Arial, sans-serif;" href="https://frominvest-ag.com/datenschutz" target="_blank" rel="noopener noreferrer">Datenschutz</a></td>
-<td class="v1v1v1v1v1v1v1v1footer-link" style="padding: 0 12px;"><a style="color: rgba(255,255,255,0.6); font-size: 13px; font-weight: 500; text-decoration: none; font-family: 'Inter', Arial, sans-serif;" href="https://frominvest-ag.com/impressum" target="_blank" rel="noopener noreferrer">Impressum</a></td>
+<td class="v1v1v1v1v1v1v1v1footer-link" style="padding: 0 12px;"><a style="color: #c9a84c; font-size: 13px; font-weight: 500; text-decoration: none; font-family: 'Inter', Arial, sans-serif;" href="https://festgeldplaner.com/" target="_blank" rel="noopener noreferrer"> Webseite </a></td>
+<td class="v1v1v1v1v1v1v1v1footer-link" style="padding: 0 12px;"><a style="color: rgba(255,255,255,0.6); font-size: 13px; font-weight: 500; text-decoration: none; font-family: 'Inter', Arial, sans-serif;" href="https://festgeldplaner.com/datenschutz" target="_blank" rel="noopener noreferrer">Datenschutz</a></td>
+<td class="v1v1v1v1v1v1v1v1footer-link" style="padding: 0 12px;"><a style="color: rgba(255,255,255,0.6); font-size: 13px; font-weight: 500; text-decoration: none; font-family: 'Inter', Arial, sans-serif;" href="https://festgeldplaner.com/impressum" target="_blank" rel="noopener noreferrer">Impressum</a></td>
 </tr>
 </tbody>
 </table>
@@ -282,7 +292,7 @@ function getUserResponseHTML(lastName) {
 </tr>
 <tr>
 <td align="center">
-<p style="color: rgba(255,255,255,0.35); font-size: 11px; line-height: 18px; margin: 0; font-family: 'Inter', Arial, sans-serif;">&copy; 2026 Frominvest AG. Alle Rechte vorbehalten.<br />Handelsregister-Nr.: CH-020.3.037.471-4 &middot; UID: CHE-455.713.175</p>
+<p style="color: rgba(255,255,255,0.35); font-size: 11px; line-height: 18px; margin: 0; font-family: 'Inter', Arial, sans-serif;">&copy; 2026 FestgeldPlaner. Alle Rechte vorbehalten.<br />Handelsregister-Nr.: CH-020.3.037.471-4 &middot; UID: CHE-455.713.175</p>
 </td>
 </tr>
 </tbody>
@@ -307,7 +317,7 @@ function getUserResponseHTML(lastName) {
 
 // ─── API ENDPOINT: POST /api/lead ─────────────────────────────────────────────
 app.post('/api/lead', rateLimit, async (req, res) => {
-    const { firstName, lastName, email, phone } = req.body;
+    const { firstName, lastName, email, phone, amount, duration } = req.body;
 
     // 1. Validate fields
     if (!firstName || !lastName || !email || !isValidEmail(email) || !phone) {
@@ -318,7 +328,7 @@ app.post('/api/lead', rateLimit, async (req, res) => {
     }
 
     // 2. Save lead to storage
-    const lead = saveLead(firstName, lastName, email, phone);
+    const lead = saveLead(firstName, lastName, email, phone, amount, duration);
     const currentDate = new Date().toLocaleDateString('de-DE', {
         day: '2-digit',
         month: '2-digit',
@@ -333,10 +343,10 @@ app.post('/api/lead', rateLimit, async (req, res) => {
     // Admin notification email
     emailPromises.push(
         transporter.sendMail({
-            from: `"Frominvest AG" <${process.env.SMTP_USER}>`,
-            to: process.env.ADMIN_EMAIL || 'info@frominvest-ag.com',
+            from: `"FestgeldPlaner" <${process.env.SMTP_USER}>`,
+            to: process.env.ADMIN_EMAIL || 'info@festgeldplaner.com',
             subject: `Neue Lead Anfrage: ${firstName} ${lastName}`,
-            html: getAdminEmailHTML(firstName, lastName, email, phone, currentDate)
+            html: getAdminEmailHTML(firstName, lastName, email, phone, amount, duration, currentDate)
         }).catch(err => {
             console.error('❌ Admin email failed:', err.message);
         })
@@ -346,9 +356,9 @@ app.post('/api/lead', rateLimit, async (req, res) => {
     /*
     emailPromises.push(
         transporter.sendMail({
-            from: `"Frominvest AG" <${process.env.SMTP_USER}>`,
+            from: `"FestgeldPlaner" <${process.env.SMTP_USER}>`,
             to: email,
-            subject: 'Ihre Anfrage bei Frominvest AG',
+            subject: 'Ihre Anfrage bei FestgeldPlaner',
             html: getUserResponseHTML(lastName)
         }).catch(err => {
             console.error('❌ User response email failed:', err.message);
@@ -380,8 +390,9 @@ app.get('/api/health', (req, res) => {
 
 // ─── START SERVER ─────────────────────────────────────────────────────────────
 app.listen(PORT, () => {
-    console.log(`\n🚀 Frominvest AG Server running on http://localhost:${PORT}`);
+    console.log(`\n🚀 FestgeldPlaner Server running on http://localhost:${PORT}`);
     console.log(`📧 SMTP: ${process.env.SMTP_USER || '⚠️ NOT CONFIGURED (set SMTP_USER in .env)'}`);
-    console.log(`📬 Admin: ${process.env.ADMIN_EMAIL || 'info@frominvest-ag.com'}`);
+    console.log(`📬 Admin: ${process.env.ADMIN_EMAIL || 'info@festgeldplaner.com'}`);
     console.log(`📁 Leads file: ${LEADS_FILE}\n`);
 });
+

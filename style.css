@@ -1,5 +1,5 @@
 /* ========================================
-   FROMINVEST AG – FESTGELD SCHWEIZ
+   FestgeldPlaner â€“ FESTGELD SCHWEIZ
    Premium Swiss Landing Page
    ======================================== */
 
@@ -828,7 +828,7 @@ textarea.form-input {
 .table-disclaimer {
     text-align: center;
     font-size: 0.85rem;
-    color: var(--gray-500);
+    color: white;
     margin-top: 24px;
 }
 
@@ -1429,11 +1429,11 @@ textarea.form-input {
 
 .calculator-section {
     padding: 80px 0;
-    background-image: url('www/img/calc_bg.png');
+    /* background-image: url('www/img/calc_bg.png');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
-    background-repeat: no-repeat;
+    background-repeat: no-repeat; */
 }
 
 .calc-card {
@@ -1885,5 +1885,98 @@ div#trust-content {
 
     .cookie-icon-wrapper {
         display: none;
+    }
+}
+
+/* --- LEAD MODAL (SIDEBAR) --- */
+.lead-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(15, 37, 64, 0.6);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    z-index: 2000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+.lead-modal-overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.lead-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    max-width: 450px;
+    height: 100%;
+    background: var(--white);
+    z-index: 2001;
+    display: flex;
+    flex-direction: column;
+    transform: translateX(-100%);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 10px 0 30px rgba(0, 0, 0, 0.15);
+    overflow-y: auto;
+}
+
+.lead-modal.show {
+    transform: translateX(0);
+}
+
+.lead-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 32px;
+    background: var(--off-white);
+    border-bottom: 1px solid var(--gray-100);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.lead-modal-close {
+    background: transparent;
+    border: none;
+    font-size: 2rem;
+    line-height: 1;
+    color: var(--gray-400);
+    cursor: pointer;
+    transition: color 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+}
+
+.lead-modal-close:hover {
+    color: var(--navy);
+    background: rgba(26, 58, 92, 0.05);
+}
+
+.lead-modal-body {
+    padding: 32px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+@media (max-width: 480px) {
+    .lead-modal {
+        max-width: 100%;
+    }
+
+    .lead-modal-body {
+        padding: 24px;
     }
 }
