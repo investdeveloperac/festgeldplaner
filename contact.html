@@ -54,31 +54,121 @@
                 <div class="email-card" style="padding: 40px;">
                     <h3 style="color: var(--navy); margin-bottom: 16px;">Senden Sie uns eine Nachricht</h3>
                     <p style="margin-bottom: 24px; color: var(--gray-600);">Wir antworten in der Regel innerhalb von 24 Stunden (Werktags).</p>
-                    <form class="email-form-group" style="display: flex; flex-direction: column; gap: 16px;">
-                        <input type="text" placeholder="Betreff" class="form-input" style="width: 100%;" required>
-                        <textarea placeholder="Ihre Nachricht" class="form-input" style="width: 100%; min-height: 150px; resize: vertical;" required></textarea>
-                        <button type="submit" class="btn btn-primary" style="align-self: flex-start;">Nachricht senden</button>
+                    <form id="contact-form" onsubmit="handleContactSubmit(event)">
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+                            <div class="form-group-field">
+                                <label for="contact-first-name" class="sr-only">Vorname</label>
+                                <input type="text" id="contact-first-name" class="form-input" placeholder="Vorname" required>
+                            </div>
+                            <div class="form-group-field">
+                                <label for="contact-last-name" class="sr-only">Nachname</label>
+                                <input type="text" id="contact-last-name" class="form-input" placeholder="Nachname" required>
+                            </div>
+                        </div>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+                            <div class="form-group-field">
+                                <label for="contact-email" class="sr-only">E-Mail</label>
+                                <input type="email" id="contact-email" class="form-input" placeholder="E-Mail" required>
+                            </div>
+                            <div class="form-group-field">
+                                <label for="contact-phone" class="sr-only">Telefon</label>
+                                <input type="tel" id="contact-phone" class="form-input" placeholder="Telefon" required>
+                            </div>
+                        </div>
+                        <div class="form-group-field" style="margin-bottom: 16px;">
+                            <label for="contact-subject" class="sr-only">Betreff</label>
+                            <input type="text" id="contact-subject" placeholder="Betreff" class="form-input" style="width: 100%;" required>
+                        </div>
+                        <div class="form-group-field" style="margin-bottom: 24px;">
+                            <label for="contact-message" class="sr-only">Ihre Nachricht</label>
+                            <textarea id="contact-message" placeholder="Ihre Nachricht" class="form-input" style="width: 100%; min-height: 120px; resize: vertical;" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" id="contact-submit-btn" style="width: 100%;">Nachricht senden</button>
+                        
+                        <div id="contact-success" style="margin-top: 24px; display: none; align-items: center; gap: 12px; background: #f0fff4; color: #22543d; padding: 16px; border-radius: 8px; border: 1px solid #c6f6d5;">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <circle cx="10" cy="10" r="10" fill="#27ae60" />
+                                <path d="M6 10l3 3 5-5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                            <span style="font-weight: 500;">Vielen Dank! Ihre Nachricht wurde erfolgreich gesendet.</span>
+                        </div>
                     </form>
                 </div>
             </div>
         </div>
     </main>
 
-    <footer class="footer" style="background-image: url('www/img/footer_bg.png');">
+    
+    <!-- TRUST SIGNALS -->
+    <section class="trust-signals">
         <div class="container">
-            <div class="footer-grid">
-                <div class="footer-brand"><div class="footer-logo"><img src="www/img/icon.png" class="footer-logo-img"><span class="logo-text">FestgeldPlaner</span></div></div>
-                <div class="footer-links">
-                    <a href="index.html" class="footer-link">Home</a>
-                    <a href="about.html" class="footer-link">Über uns</a>
-                    <a href="locations.html" class="footer-link">Standorte</a>
+            <div class="trust-grid-new">
+                <div class="trust-item-new">
+                    <div class="trust-logo-wrapper">
+                        <img src="www/img/trust_logo_bankingcheck.png" alt="BankingCheck Award" class="trust-logo">
+                    </div>
+                    <p class="trust-text-new">Exzellenter Service und ausgezeichnete Finanzlösungen</p>
+                </div>
+                <div class="trust-item-new">
+                    <div class="trust-logo-wrapper">
+                        <img src="www/img/trust_logo_handelsblatt.png" alt="Handelsblatt Award" class="trust-logo">
+                    </div>
+                    <p class="trust-text-new">Top-Zinsen für Ihre sichere Geldanlage – mehrfach ausgezeichnet</p>
+                </div>
+                <div class="trust-item-new">
+                    <div class="trust-logo-wrapper">
+                        <img src="www/img/trust_logo_fmh.png" alt="FMH Finanzberatung Award" class="trust-logo">
+                    </div>
+                    <p class="trust-text-new">Empfohlen von führenden Finanzportalen</p>
+                </div>
+                <div class="trust-item-new">
+                    <div class="trust-logo-wrapper">
+                        <img src="www/img/trust_logo_provenexpert.png" alt="ProvenExpert Award" class="trust-logo">
+                    </div>
+                    <p class="trust-text-new">Attraktive Renditen und maximale Sicherheit</p>
                 </div>
             </div>
-            <div class="footer-copyright"><p>&copy; 2026 FestgeldPlaner. Alle Rechte vorbehalten.</p></div>
+        </div>
+    </section>
+
+    <footer class="footer" id="footer" style="background-image: url('www/img/footer_bg.png'); border-top: 1px solid var(--gray-100); padding: 80px 0 20px;">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <img src="www/img/icon.png" alt="FestgeldPlaner" class="footer-logo-img">
+                        <span class="logo-text">FestgeldPlaner</span>
+                    </div>
+                    <p class="footer-address" style="color: var(--gray-500); margin-top: 12px; font-size: 0.85rem;">Küsnacht, Schweiz</p>
+                </div>
+                <div class="footer-links-group" style="display: flex; gap: 60px; flex-wrap: wrap;">
+                    <div class="footer-col">
+                        <h4 style="color: var(--white); margin-bottom: 20px; font-size: 1rem; font-weight: 600;">Unternehmen</h4>
+                        <div class="footer-links" style="display: flex; flex-direction: column; gap: 12px;">
+                            <a href="index.html" class="footer-link">Home</a>
+                            <a href="about.html" class="footer-link">Über uns</a>
+                            <a href="locations.html" class="footer-link">Standorte</a>
+                            <a href="faq.html" class="footer-link">FAQ</a>
+                        </div>
+                    </div>
+                    
+                    <div class="footer-col">
+                        <h4 style="color: var(--white); margin-bottom: 20px; font-size: 1rem; font-weight: 600;">Rechtliches</h4>
+                        <div class="footer-links" style="display: flex; flex-direction: column; gap: 12px;">
+                            <a href="impressum.html" class="footer-link">Impressum</a>
+                            <a href="datenschutz.html" class="footer-link">Datenschutz</a>
+                            <a href="contact.html" class="footer-link">Kontakt</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-divider" style="height: 1px; background: rgba(255,255,255,0.1); margin: 60px 0 30px;"></div>
+            <div class="footer-copyright" style="text-align: center; color: var(--gray-500); font-size: 0.85rem;">
+                <p>&copy; 2026 FestgeldPlaner. Alle Rechte vorbehalten. | <a href="datenschutz.html" style="color: inherit; text-decoration: underline;">Datenschutz</a></p>
+            </div>
         </div>
     </footer>
+
     <script src="app.js"></script>
 </body>
 </html>
-
-

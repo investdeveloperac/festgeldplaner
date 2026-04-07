@@ -160,12 +160,12 @@ const BankLogos = {
     "Erste Bank": "https://www.google.com/s2/favicons?domain=erstebank.at&sz=128",
     "Commerzbank": "https://www.google.com/s2/favicons?domain=commerzbank.de&sz=128",
     "ING Deutschland": "https://www.google.com/s2/favicons?domain=ing.de&sz=128",
-    "Zürcher Kantonalbank": "https://en.wikipedia.org/wiki/Special:FilePath/Z%C3%BCrcher_Kantonalbank_logo.svg?width=512",
+    "Zürcher Kantonalbank": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y+mAAAASFBMVEUAPLQAMrIAKrAAOrMAL7GDlNHIz+rEzOjP1u0wVLsXRbf////K0usAJ68AH64APrVmfMmMm9T19/zm6vans95AX74ANrOvuuHNQ3ADAAAAW0lEQVR4AdWRNRIAIRAEz11w/v9SNGRqcjrt9R36ZZwKM3LLuu2J4wR2vu7C84LE76jyB4mjqE4uoOikitMfKDqZmmhd65ytzr8Dl7wsH4ivwo/Az8cOT17WJRGtWQYZ04jCLgAAAABJRU5ErkJggg==",
     "Sparkasse": "https://www.google.com/s2/favicons?domain=sparkasse.de&sz=128",
     "Deutsche Bank": "https://www.google.com/s2/favicons?domain=deutsche-bank.de&sz=128",
     "Raiffeisenbank Österreich": "https://www.google.com/s2/favicons?domain=raiffeisen.at&sz=128",
     "UBS Schweiz": "https://www.google.com/s2/favicons?domain=ubs.com&sz=128",
-    "BAWAG P.S.K.": "https://en.wikipedia.org/wiki/Special:FilePath/BAWAG_P.S.K._logo.svg?width=512",
+    "BAWAG P.S.K.": "https://www.google.com/s2/favicons?domain=bawag.at&sz=128",
     "PostFinance": "https://www.google.com/s2/favicons?domain=postfinance.ch&sz=128",
     "Raiffeisen Schweiz": "https://www.google.com/s2/favicons?domain=raiffeisen.ch&sz=128",
     "Credit Suisse": "https://www.google.com/s2/favicons?domain=credit-suisse.com&sz=128"
@@ -544,7 +544,7 @@ const ModalController = {
         const overlay = document.getElementById('lead-modal-overlay');
         const modal = document.getElementById('lead-modal');
         const closeBtn = document.getElementById('lead-modal-close');
-        
+
         if (!overlay || !modal) return;
 
         const openModal = (e) => {
@@ -577,7 +577,7 @@ const ModalController = {
         // Open if URL hash matches
         if (window.location.hash === '#lead-modal') {
             setTimeout(() => {
-                openModal({ preventDefault: () => {} });
+                openModal({ preventDefault: () => { } });
                 history.replaceState(null, null, ' ');
             }, 300);
         }
@@ -588,7 +588,7 @@ const ModalController = {
         const calcInv = document.getElementById('calc-investment');
         const calcSlider = document.getElementById('calc-investment-slider');
         const calcDur = document.getElementById('calc-duration');
-        
+
         if (mAmount && calcInv && calcSlider) {
             mAmount.addEventListener('input', (e) => {
                 calcInv.value = e.target.value;
@@ -623,10 +623,10 @@ const ModalController = {
         const address = form.querySelector('#modal-address');
         const successEl = document.getElementById('modal-email-success');
         const submitBtn = form.querySelector('#btn-modal-submit');
-        
+
         const inputs = [amount, duration, firstName, lastName, email, phone, address];
         let isValid = true;
-        
+
         inputs.forEach(input => {
             if (!input || !input.value || !input.validity.valid) {
                 if (input) {
@@ -637,14 +637,14 @@ const ModalController = {
                 isValid = false;
             }
         });
-        
+
         if (!isValid) return;
-        
+
         const originalText = submitBtn.textContent;
         submitBtn.textContent = 'Wird gesendet...';
         submitBtn.disabled = true;
         submitBtn.style.opacity = '0.7';
-        
+
         try {
             const response = await fetch('/api/lead', {
                 method: 'POST',
@@ -661,16 +661,16 @@ const ModalController = {
                     address: address.value
                 })
             });
-        
+
             const result = await response.json();
-        
+
             if (response.ok && result.success) {
                 successEl.classList.add('show');
-                
+
                 submitBtn.textContent = 'Gesendet ✓';
                 submitBtn.style.background = '#27ae60';
                 submitBtn.style.opacity = '1';
-                
+
                 setTimeout(() => {
                     successEl.classList.remove('show');
                     // Reset form fields except defaults
@@ -679,11 +679,11 @@ const ModalController = {
                     email.value = '';
                     phone.value = '';
                     address.value = '';
-                    
+
                     submitBtn.textContent = originalText;
                     submitBtn.disabled = false;
                     submitBtn.style.background = '';
-                    
+
                     // Close the modal upon success
                     document.getElementById('lead-modal-overlay').classList.remove('show');
                     document.getElementById('lead-modal').classList.remove('show');
@@ -697,9 +697,9 @@ const ModalController = {
             submitBtn.textContent = 'Fehler! Nochmal...';
             submitBtn.style.background = '#e74c3c';
             submitBtn.style.opacity = '1';
-        
+
             alert(error.message || 'Verbindung zum Server fehlgeschlagen. Bitte versuchen Sie es später erneut.');
-        
+
             setTimeout(() => {
                 submitBtn.textContent = originalText;
                 submitBtn.disabled = false;
@@ -708,6 +708,60 @@ const ModalController = {
         }
     }
 };
+
+// region CONTACT HANDLER ─────────────────────────────────────────────────────────
+async function handleContactSubmit(event) {
+    event.preventDefault();
+    const form = event.target;
+    const firstName = document.getElementById('contact-first-name');
+    const lastName = document.getElementById('contact-last-name');
+    const email = document.getElementById('contact-email');
+    const phone = document.getElementById('contact-phone');
+    const subject = document.getElementById('contact-subject');
+    const message = document.getElementById('contact-message');
+    const successEl = document.getElementById('contact-success');
+    const submitBtn = document.getElementById('contact-submit-btn');
+
+    const inputs = [firstName, lastName, email, phone, subject, message];
+    let isValid = true;
+
+    inputs.forEach(input => {
+        if (!input.value || !input.validity.valid) {
+            input.style.borderColor = '#c53030';
+            input.style.boxShadow = '0 0 0 3px rgba(197, 48, 48, 0.1)';
+            setTimeout(() => {
+                input.style.borderColor = '';
+                input.style.boxShadow = '';
+            }, 2000);
+            isValid = false;
+        }
+    });
+
+    if (!isValid) return;
+
+    const originalText = submitBtn.textContent;
+    submitBtn.textContent = 'Wird gesendet...';
+    submitBtn.disabled = true;
+    submitBtn.style.opacity = '0.7';
+
+    // Simulate API call
+    setTimeout(() => {
+        successEl.style.display = 'flex';
+        submitBtn.textContent = 'Gesendet ✓';
+        submitBtn.style.background = '#27ae60';
+        submitBtn.style.opacity = '1';
+
+        // Reset form
+        form.reset();
+
+        setTimeout(() => {
+            successEl.style.display = 'none';
+            submitBtn.textContent = originalText;
+            submitBtn.disabled = false;
+            submitBtn.style.background = '';
+        }, 4000);
+    }, 800);
+}
 
 // region COOKIE MANAGER ───────────────────────────────────────────────────────────
 const CookieManager = {

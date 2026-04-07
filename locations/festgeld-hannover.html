@@ -86,17 +86,39 @@
         </div>
     </header>
 
-    <!-- TRUST BAR (Bekannt aus) -->
-    <section class="trust-bar">
-        <div class="container trust-container">
-            <span class="trust-label">Bekannt aus & Zertifiziert durch:</span>
-            <div class="trust-logos">
-                <img src="../www/img/trust_signals_banner.png"
-                    alt="Vertrauenssignale: Trustpilot, FinanzNachrichten, Handelsblatt" class="trust-banner-img"
-                    loading="lazy">
+    
+    <!-- TRUST SIGNALS -->
+    <section class="trust-signals">
+        <div class="container">
+            <div class="trust-grid-new">
+                <div class="trust-item-new">
+                    <div class="trust-logo-wrapper">
+                        <img src="../www/img/trust_logo_bankingcheck.png" alt="BankingCheck Award" class="trust-logo">
+                    </div>
+                    <p class="trust-text-new">Exzellenter Service und ausgezeichnete Finanzlösungen</p>
+                </div>
+                <div class="trust-item-new">
+                    <div class="trust-logo-wrapper">
+                        <img src="../www/img/trust_logo_handelsblatt.png" alt="Handelsblatt Award" class="trust-logo">
+                    </div>
+                    <p class="trust-text-new">Top-Zinsen für Ihre sichere Geldanlage – mehrfach ausgezeichnet</p>
+                </div>
+                <div class="trust-item-new">
+                    <div class="trust-logo-wrapper">
+                        <img src="../www/img/trust_logo_fmh.png" alt="FMH Finanzberatung Award" class="trust-logo">
+                    </div>
+                    <p class="trust-text-new">Empfohlen von führenden Finanzportalen</p>
+                </div>
+                <div class="trust-item-new">
+                    <div class="trust-logo-wrapper">
+                        <img src="../www/img/trust_logo_provenexpert.png" alt="ProvenExpert Award" class="trust-logo">
+                    </div>
+                    <p class="trust-text-new">Attraktive Renditen und maximale Sicherheit</p>
+                </div>
             </div>
         </div>
     </section>
+
 
     <main class="container content-seo-wrapper" style="padding: 60px 0;">
         <p>In Hannover suchen Anleger vermehrt nach stabilen Renditechancen. Festgeld bietet hier eine optimale
@@ -156,29 +178,45 @@
         </div>
     </section>
 
-    <footer class="footer" style="background-image: url('../www/img/footer_bg.png');">
+    
+    <footer class="footer" id="footer" style="background-image: url('../www/img/footer_bg.png'); border-top: 1px solid var(--gray-100); padding: 80px 0 20px;">
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-brand">
-                    <div class="footer-logo"><img src="../www/img/icon.png" class="footer-logo-img"><span
-                            class="logo-text">FestgeldPlaner</span></div>
+                    <div class="footer-logo">
+                        <img src="../www/img/icon.png" alt="FestgeldPlaner" class="footer-logo-img">
+                        <span class="logo-text">FestgeldPlaner</span>
+                    </div>
+                    <p class="footer-address" style="color: var(--gray-500); margin-top: 12px; font-size: 0.85rem;">Küsnacht, Schweiz</p>
                 </div>
-                <div class="footer-col">
-                    <h4 style="color: var(--white); margin-bottom: 16px;">Unternehmen</h4>
-                    <div class="footer-links">
-                        <a href="../index.html" class="footer-link">Home</a>
-                        <a href="../about.html" class="footer-link">Über uns</a>
-                        <a href="../locations.html" class="footer-link">Standorte</a>
-                        <a href="../faq.html" class="footer-link">FAQ</a>
-                        <a href="../contact.html" class="footer-link">Kontakt</a>
+                <div class="footer-links-group" style="display: flex; gap: 60px; flex-wrap: wrap;">
+                    <div class="footer-col">
+                        <h4 style="color: var(--white); margin-bottom: 20px; font-size: 1rem; font-weight: 600;">Unternehmen</h4>
+                        <div class="footer-links" style="display: flex; flex-direction: column; gap: 12px;">
+                            <a href="../index.html" class="footer-link">Home</a>
+                            <a href="../about.html" class="footer-link">Über uns</a>
+                            <a href="../locations.html" class="footer-link">Standorte</a>
+                            <a href="../faq.html" class="footer-link">FAQ</a>
+                        </div>
+                    </div>
+                    
+                    <div class="footer-col">
+                        <h4 style="color: var(--white); margin-bottom: 20px; font-size: 1rem; font-weight: 600;">Rechtliches</h4>
+                        <div class="footer-links" style="display: flex; flex-direction: column; gap: 12px;">
+                            <a href="../impressum.html" class="footer-link">Impressum</a>
+                            <a href="../datenschutz.html" class="footer-link">Datenschutz</a>
+                            <a href="../contact.html" class="footer-link">Kontakt</a>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="footer-copyright">
-                <p>&copy; 2026 FestgeldPlaner. Alle Rechte vorbehalten.</p>
+            <div class="footer-divider" style="height: 1px; background: rgba(255,255,255,0.1); margin: 60px 0 30px;"></div>
+            <div class="footer-copyright" style="text-align: center; color: var(--gray-500); font-size: 0.85rem;">
+                <p>&copy; 2026 FestgeldPlaner. Alle Rechte vorbehalten. | <a href="../datenschutz.html" style="color: inherit; text-decoration: underline;">Datenschutz</a></p>
             </div>
         </div>
     </footer>
+
 
     <script src="../app.js"></script>
 </body>
